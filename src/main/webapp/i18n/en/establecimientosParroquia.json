@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "establecimientosParroquia": {
+      "home": {
+        "title": "Parroquias",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Parroquia",
+        "createOrEditLabel": "Create or edit a Parroquia",
+        "notFound": "No Parroquias found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Parroquia {{ id }}?"
+      },
+      "detail": {
+        "title": "Parroquia"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "tipoId": "Tipo Id",
+      "circuito": "Circuito",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre",
+        "tipoId": "tipoId"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosParroquia": {
+      "created": "A new Parroquia is created with identifier {{ param }}",
+      "updated": "A Parroquia is updated with identifier {{ param }}",
+      "deleted": "A Parroquia is deleted with identifier {{ param }}"
+    }
+  }
+}

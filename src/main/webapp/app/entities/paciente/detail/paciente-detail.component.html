@@ -1,0 +1,212 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (paciente) {
+      <div>
+        <h2 data-cy="pacienteDetailsHeading"><span jhiTranslate="gatewayApp.paciente.detail.title">Paciente</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ paciente.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.paciente.lugarNacimiento" [ngbTooltip]="'gatewayApp.paciente.help.lugarNacimiento' | translate"
+              >Lugar Nacimiento</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.lugarNacimiento }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.paciente.fechaNacimiento" [ngbTooltip]="'gatewayApp.paciente.help.fechaNacimiento' | translate"
+              >Fecha Nacimiento</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.fechaNacimiento | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.paciente.callePrincipal" [ngbTooltip]="'gatewayApp.paciente.help.callePrincipal' | translate"
+              >Calle Principal</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.callePrincipal }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.paciente.numeroCasa" [ngbTooltip]="'gatewayApp.paciente.help.numeroCasa' | translate"
+              >Numero Casa</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.numeroCasa }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.paciente.calleSecundaria" [ngbTooltip]="'gatewayApp.paciente.help.calleSecundaria' | translate"
+              >Calle Secundaria</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.calleSecundaria }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.paciente.barrio" [ngbTooltip]="'gatewayApp.paciente.help.barrio' | translate">Barrio</span>
+          </dt>
+          <dd>
+            <span>{{ paciente.barrio }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.paciente.referenciaDomicilio"
+              [ngbTooltip]="'gatewayApp.paciente.help.referenciaDomicilio' | translate"
+              >Referencia Domicilio</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.referenciaDomicilio }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.paciente.seguroSaludSecundario"
+              [ngbTooltip]="'gatewayApp.paciente.help.seguroSaludSecundario' | translate"
+              >Seguro Salud Secundario</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.seguroSaludSecundario }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.paciente.identificacionRepresentante"
+              [ngbTooltip]="'gatewayApp.paciente.help.identificacionRepresentante' | translate"
+              >Identificacion Representante</span
+            >
+          </dt>
+          <dd>
+            <span>{{ paciente.identificacionRepresentante }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.discapacidad">Discapacidad</span></dt>
+          <dd>
+            @if (paciente.discapacidad) {
+              <div>
+                <a [routerLink]="['/discapacidad', paciente.discapacidad.id, 'view']">{{ paciente.discapacidad.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.persona">Persona</span></dt>
+          <dd>
+            @if (paciente.persona) {
+              <div>
+                <a [routerLink]="['/persona', paciente.persona.id, 'view']">{{ paciente.persona.primerNombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.parroquiaNacimiento">Parroquia Nacimiento</span></dt>
+          <dd>
+            @if (paciente.parroquiaNacimiento) {
+              <div>
+                <a [routerLink]="['/parroquia-territorio', paciente.parroquiaNacimiento.id, 'view']">{{
+                  paciente.parroquiaNacimiento.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.parroquiaResidencia">Parroquia Residencia</span></dt>
+          <dd>
+            @if (paciente.parroquiaResidencia) {
+              <div>
+                <a [routerLink]="['/parroquia-territorio', paciente.parroquiaResidencia.id, 'view']">{{
+                  paciente.parroquiaResidencia.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.autoidentificacionEtnica">Autoidentificacion Etnica</span></dt>
+          <dd>
+            @if (paciente.autoidentificacionEtnica) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.autoidentificacionEtnica.id, 'view']">{{
+                  paciente.autoidentificacionEtnica.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.nacionalidadEtnica">Nacionalidad Etnica</span></dt>
+          <dd>
+            @if (paciente.nacionalidadEtnica) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.nacionalidadEtnica.id, 'view']">{{ paciente.nacionalidadEtnica.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.pueblo">Pueblo</span></dt>
+          <dd>
+            @if (paciente.pueblo) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.pueblo.id, 'view']">{{ paciente.pueblo.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.tipoEmpresaTrabajo">Tipo Empresa Trabajo</span></dt>
+          <dd>
+            @if (paciente.tipoEmpresaTrabajo) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.tipoEmpresaTrabajo.id, 'view']">{{ paciente.tipoEmpresaTrabajo.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.profesionOcupacion">Profesion Ocupacion</span></dt>
+          <dd>
+            @if (paciente.profesionOcupacion) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.profesionOcupacion.id, 'view']">{{ paciente.profesionOcupacion.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.seguroSaludPrincipal">Seguro Salud Principal</span></dt>
+          <dd>
+            @if (paciente.seguroSaludPrincipal) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.seguroSaludPrincipal.id, 'view']">{{
+                  paciente.seguroSaludPrincipal.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.tipoBono">Tipo Bono</span></dt>
+          <dd>
+            @if (paciente.tipoBono) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.tipoBono.id, 'view']">{{ paciente.tipoBono.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.paciente.procedenciaRepresentante">Procedencia Representante</span></dt>
+          <dd>
+            @if (paciente.procedenciaRepresentante) {
+              <div>
+                <a [routerLink]="['/catalogo-item', paciente.procedenciaRepresentante.id, 'view']">{{
+                  paciente.procedenciaRepresentante.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/paciente', paciente.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "cantonTerritorio": {
+      "home": {
+        "title": "Canton Territorios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Canton Territorio",
+        "createOrEditLabel": "Crear o editar Canton Territorio",
+        "notFound": "Ningún Canton Territorios encontrado"
+      },
+      "created": "Un nuevo Canton Territorio ha sido creado con el identificador {{ param }}",
+      "updated": "Un Canton Territorio ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Canton Territorio ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Canton Territorio {{ id }}?"
+      },
+      "detail": {
+        "title": "Canton Territorio"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "provincia": "Provincia",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre"
+      }
+    }
+  }
+}

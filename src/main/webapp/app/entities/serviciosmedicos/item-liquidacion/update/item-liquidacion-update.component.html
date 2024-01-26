@@ -1,0 +1,123 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-item-liquidacion-heading"
+        data-cy="ItemLiquidacionCreateUpdateHeading"
+        jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.home.createOrEditLabel"
+      >
+        Create or edit a Item Liquidacion
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.fecha"
+            for="field_fecha"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosItemLiquidacion.help.fecha' | translate"
+            >Fecha</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fecha"
+              data-cy="fecha"
+              type="text"
+              class="form-control"
+              name="fecha"
+              ngbDatepicker
+              #fechaDp="ngbDatepicker"
+              formControlName="fecha"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (editForm.get('fecha')!.invalid && (editForm.get('fecha')!.dirty || editForm.get('fecha')!.touched)) {
+            <div>
+              @if (editForm.get('fecha')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.habilitado"
+            for="field_habilitado"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosItemLiquidacion.help.habilitado' | translate"
+            >Habilitado</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="habilitado"
+            id="field_habilitado"
+            data-cy="habilitado"
+            formControlName="habilitado"
+          />
+          @if (editForm.get('habilitado')!.invalid && (editForm.get('habilitado')!.dirty || editForm.get('habilitado')!.touched)) {
+            <div>
+              @if (editForm.get('habilitado')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.continuidad" for="field_continuidad"
+            >Continuidad</label
+          >
+          <select
+            class="form-control"
+            id="field_continuidad"
+            data-cy="continuidad"
+            name="continuidad"
+            formControlName="continuidad"
+            [compareWith]="compareContinuidadAsistencial"
+          >
+            @if (!editForm.get('continuidad')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (continuidadAsistencialOption of continuidadAsistencialsSharedCollection; track $index) {
+              <option [ngValue]="continuidadAsistencialOption">{{ continuidadAsistencialOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['continuidad'])!.invalid && (editForm.get(['continuidad'])!.dirty || editForm.get(['continuidad'])!.touched)) {
+          <div>
+            @if (editForm.get(['continuidad'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

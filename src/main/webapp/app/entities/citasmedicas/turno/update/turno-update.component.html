@@ -1,0 +1,185 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-turno-heading" data-cy="TurnoCreateUpdateHeading" jhiTranslate="gatewayApp.citasmedicasTurno.home.createOrEditLabel">
+        Create or edit a Turno
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasTurno.orden"
+            for="field_orden"
+            [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.orden' | translate"
+            >Orden</label
+          >
+          <input type="number" class="form-control" name="orden" id="field_orden" data-cy="orden" formControlName="orden" />
+          @if (editForm.get('orden')!.invalid && (editForm.get('orden')!.dirty || editForm.get('orden')!.touched)) {
+            <div>
+              @if (editForm.get('orden')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('orden')?.errors?.number" jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasTurno.horaInicio"
+            for="field_horaInicio"
+            [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.horaInicio' | translate"
+            >Hora Inicio</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horaInicio"
+              data-cy="horaInicio"
+              type="datetime-local"
+              class="form-control"
+              name="horaInicio"
+              formControlName="horaInicio"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('horaInicio')!.invalid && (editForm.get('horaInicio')!.dirty || editForm.get('horaInicio')!.touched)) {
+            <div>
+              @if (editForm.get('horaInicio')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('horaInicio')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasTurno.horaFin"
+            for="field_horaFin"
+            [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.horaFin' | translate"
+            >Hora Fin</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horaFin"
+              data-cy="horaFin"
+              type="datetime-local"
+              class="form-control"
+              name="horaFin"
+              formControlName="horaFin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('horaFin')!.invalid && (editForm.get('horaFin')!.dirty || editForm.get('horaFin')!.touched)) {
+            <div>
+              @if (editForm.get('horaFin')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('horaFin')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasTurno.activo"
+            for="field_activo"
+            [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.activo' | translate"
+            >Activo</label
+          >
+          <input type="checkbox" class="form-check" name="activo" id="field_activo" data-cy="activo" formControlName="activo" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasTurno.extra"
+            for="field_extra"
+            [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.extra' | translate"
+            >Extra</label
+          >
+          <input type="checkbox" class="form-check" name="extra" id="field_extra" data-cy="extra" formControlName="extra" />
+          @if (editForm.get('extra')!.invalid && (editForm.get('extra')!.dirty || editForm.get('extra')!.touched)) {
+            <div>
+              @if (editForm.get('extra')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.citasmedicasTurno.detalleCronograma" for="field_detalleCronograma"
+            >Detalle Cronograma</label
+          >
+          <select
+            class="form-control"
+            id="field_detalleCronograma"
+            data-cy="detalleCronograma"
+            name="detalleCronograma"
+            formControlName="detalleCronograma"
+            [compareWith]="compareDetalleCronograma"
+          >
+            @if (!editForm.get('detalleCronograma')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (detalleCronogramaOption of detalleCronogramasSharedCollection; track $index) {
+              <option [ngValue]="detalleCronogramaOption">{{ detalleCronogramaOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['detalleCronograma'])!.invalid &&
+          (editForm.get(['detalleCronograma'])!.dirty || editForm.get(['detalleCronograma'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['detalleCronograma'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

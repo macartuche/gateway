@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153524"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Cie entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "cie",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "activo",
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Cie",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "itemCie",
+      "relationshipName": "items",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

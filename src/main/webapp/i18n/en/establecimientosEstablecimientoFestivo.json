@@ -1,0 +1,33 @@
+{
+  "gatewayApp": {
+    "establecimientosEstablecimientoFestivo": {
+      "home": {
+        "title": "Establecimiento Festivos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Establecimiento Festivo",
+        "createOrEditLabel": "Create or edit a Establecimiento Festivo",
+        "notFound": "No Establecimiento Festivos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Establecimiento Festivo {{ id }}?"
+      },
+      "detail": {
+        "title": "Establecimiento Festivo"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "establecimiento": "Establecimiento",
+      "festivo": "Festivo",
+      "help": {
+        "activo": "activo"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosEstablecimientoFestivo": {
+      "created": "A new Establecimiento Festivo is created with identifier {{ param }}",
+      "updated": "A Establecimiento Festivo is updated with identifier {{ param }}",
+      "deleted": "A Establecimiento Festivo is deleted with identifier {{ param }}"
+    }
+  }
+}

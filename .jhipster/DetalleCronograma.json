@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153024"
+  },
+  "applications": ["gateway", "citasmedicas"],
+  "clientRootFolder": "citasmedicas",
+  "databaseType": "sql",
+  "documentation": "The DetalleCronograma entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "detalle_cronograma",
+  "fields": [
+    {
+      "documentation": "fecha",
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "cantidad",
+      "fieldName": "cantidad",
+      "fieldType": "Integer"
+    },
+    {
+      "documentation": "activo?",
+      "fieldName": "activo",
+      "fieldType": "Boolean"
+    },
+    {
+      "documentation": "fecha desactivacion de turno",
+      "fieldName": "fechaDesactivacion",
+      "fieldType": "LocalDate"
+    },
+    {
+      "documentation": "tipoId",
+      "fieldName": "tipoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "citasmedicas",
+  "name": "DetalleCronograma",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "cronograma",
+      "relationshipName": "cronograma",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

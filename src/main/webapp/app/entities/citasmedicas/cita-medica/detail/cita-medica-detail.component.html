@@ -1,0 +1,128 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (citaMedica) {
+      <div>
+        <h2 data-cy="citaMedicaDetailsHeading"><span jhiTranslate="gatewayApp.citasmedicasCitaMedica.detail.title">Cita Medica</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ citaMedica.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.fechaInicioAtencion"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.fechaInicioAtencion' | translate"
+              >Fecha Inicio Atencion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.fechaInicioAtencion | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.fechaFinAtencion"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.fechaFinAtencion' | translate"
+              >Fecha Fin Atencion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.fechaFinAtencion | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.horaInicioAtencion"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.horaInicioAtencion' | translate"
+              >Hora Inicio Atencion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.horaInicioAtencion | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.horaFinAtencion"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.horaFinAtencion' | translate"
+              >Hora Fin Atencion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.horaFinAtencion | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.activa"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.activa' | translate"
+              >Activa</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.activa }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.observacion"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.observacion' | translate"
+              >Observacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.observacion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.estadoId"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.estadoId' | translate"
+              >Estado Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.estadoId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.pacienteId"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.pacienteId' | translate"
+              >Paciente Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.pacienteId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCitaMedica.tramiteId"
+              [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.tramiteId' | translate"
+              >Tramite Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ citaMedica.tramiteId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.citasmedicasCitaMedica.turno">Turno</span></dt>
+          <dd>
+            @if (citaMedica.turno) {
+              <div>
+                <a [routerLink]="['/turno', citaMedica.turno.id, 'view']">{{ citaMedica.turno.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cita-medica', citaMedica.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

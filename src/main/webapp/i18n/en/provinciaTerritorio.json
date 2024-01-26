@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "provinciaTerritorio": {
+      "home": {
+        "title": "Provincia Territorios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Provincia Territorio",
+        "createOrEditLabel": "Create or edit a Provincia Territorio",
+        "notFound": "No Provincia Territorios found"
+      },
+      "created": "A new Provincia Territorio is created with identifier {{ param }}",
+      "updated": "A Provincia Territorio is updated with identifier {{ param }}",
+      "deleted": "A Provincia Territorio is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Provincia Territorio {{ id }}?"
+      },
+      "detail": {
+        "title": "Provincia Territorio"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "pais": "Pais",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre",
+        "pais": "pais"
+      }
+    }
+  }
+}

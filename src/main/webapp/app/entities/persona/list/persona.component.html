@@ -1,0 +1,250 @@
+<div>
+  <h2 id="page-heading" data-cy="PersonaHeading">
+    <span jhiTranslate="gatewayApp.persona.home.title">Personas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.persona.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-persona"
+        [routerLink]="['/persona/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.persona.home.createLabel">Create a new Persona</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (personas?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.persona.home.notFound">No Personas found</span>
+    </div>
+  }
+
+  @if (personas && personas.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="identificacion">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.identificacion">Identificacion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="primerApellido">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.primerApellido">Primer Apellido</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="segundoApellido">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.segundoApellido">Segundo Apellido</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="primerNombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.primerNombre">Primer Nombre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="segundoNombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.segundoNombre">Segundo Nombre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="celular">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.celular">Celular</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="telefonoConvencional">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.telefonoConvencional">Telefono Convencional</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="correo">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.correo">Correo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoIdentificacion.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.tipoIdentificacion">Tipo Identificacion</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nacionalidad.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.nacionalidad">Nacionalidad</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="usuario.login">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.usuario">Usuario</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="genero.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.genero">Genero</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="estadoCivil.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.estadoCivil">Estado Civil</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nivelEducacion.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.nivelEducacion">Nivel Educacion</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="estadoNivelEducacion.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.persona.estadoNivelEducacion">Estado Nivel Educacion</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (persona of personas; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/persona', persona.id, 'view']">{{ persona.id }}</a>
+              </td>
+              <td>{{ persona.identificacion }}</td>
+              <td>{{ persona.primerApellido }}</td>
+              <td>{{ persona.segundoApellido }}</td>
+              <td>{{ persona.primerNombre }}</td>
+              <td>{{ persona.segundoNombre }}</td>
+              <td>{{ persona.celular }}</td>
+              <td>{{ persona.telefonoConvencional }}</td>
+              <td>{{ persona.correo }}</td>
+              <td>
+                @if (persona.tipoIdentificacion) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', persona.tipoIdentificacion.id, 'view']">{{ persona.tipoIdentificacion.nombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (persona.nacionalidad) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', persona.nacionalidad.id, 'view']">{{ persona.nacionalidad.nombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                {{ persona.usuario?.login }}
+              </td>
+              <td>
+                @if (persona.genero) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', persona.genero.id, 'view']">{{ persona.genero.nombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (persona.estadoCivil) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', persona.estadoCivil.id, 'view']">{{ persona.estadoCivil.nombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (persona.nivelEducacion) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', persona.nivelEducacion.id, 'view']">{{ persona.nivelEducacion.nombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (persona.estadoNivelEducacion) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', persona.estadoNivelEducacion.id, 'view']">{{
+                      persona.estadoNivelEducacion.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/persona', persona.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/persona', persona.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(persona)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (personas && personas.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

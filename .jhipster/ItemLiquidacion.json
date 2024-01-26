@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154824"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The ItemLiquidacion entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "item_liquidacion",
+  "fields": [
+    {
+      "documentation": "fecha",
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "habilitado",
+      "fieldName": "habilitado",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "ItemLiquidacion",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "continuidadAsistencial",
+      "relationshipName": "continuidad",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

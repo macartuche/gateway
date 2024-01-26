@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (canton) {
+      <div>
+        <h2 data-cy="cantonDetailsHeading"><span jhiTranslate="gatewayApp.establecimientosCanton.detail.title">Canton</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ canton.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosCanton.codigo"
+              [ngbTooltip]="'gatewayApp.establecimientosCanton.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ canton.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosCanton.nombre"
+              [ngbTooltip]="'gatewayApp.establecimientosCanton.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ canton.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosCanton.distrito">Distrito</span></dt>
+          <dd>
+            @if (canton.distrito) {
+              <div>
+                <a [routerLink]="['/distrito', canton.distrito.id, 'view']">{{ canton.distrito.nombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/canton', canton.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,73 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153724"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Formulario053 entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "formulario_053",
+  "fields": [
+    {
+      "documentation": "fecha",
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "numeroHistoriaClinica",
+      "fieldName": "numeroHistoriaClinica",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "servicioEspecialidad",
+      "fieldName": "servicioEspecialidad",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "tipoId",
+      "fieldName": "tipoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "pacienteId",
+      "fieldName": "pacienteId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "doctorId",
+      "fieldName": "doctorId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "establecimientoOrigenId",
+      "fieldName": "establecimientoOrigenId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "establecimientoDestinoId",
+      "fieldName": "establecimientoDestinoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "especialidadId",
+      "fieldName": "especialidadId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Formulario053",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

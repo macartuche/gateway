@@ -1,0 +1,29 @@
+{
+  "gatewayApp": {
+    "discapacidad": {
+      "home": {
+        "title": "Discapacidads",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Discapacidad",
+        "createOrEditLabel": "Crear o editar Discapacidad",
+        "notFound": "Ningún Discapacidads encontrado"
+      },
+      "created": "Un nuevo Discapacidad ha sido creado con el identificador {{ param }}",
+      "updated": "Un Discapacidad ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Discapacidad ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Discapacidad {{ id }}?"
+      },
+      "detail": {
+        "title": "Discapacidad"
+      },
+      "id": "ID",
+      "porcentaje": "Porcentaje",
+      "tipo": "Tipo",
+      "estado": "Estado",
+      "help": {
+        "porcentaje": "porcentaje"
+      }
+    }
+  }
+}

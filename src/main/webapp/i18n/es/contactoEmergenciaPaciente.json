@@ -1,0 +1,33 @@
+{
+  "gatewayApp": {
+    "contactoEmergenciaPaciente": {
+      "home": {
+        "title": "Contacto Emergencia Pacientes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Contacto Emergencia Paciente",
+        "createOrEditLabel": "Crear o editar Contacto Emergencia Paciente",
+        "notFound": "Ningún Contacto Emergencia Pacientes encontrado"
+      },
+      "created": "Un nuevo Contacto Emergencia Paciente ha sido creado con el identificador {{ param }}",
+      "updated": "Un Contacto Emergencia Paciente ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Contacto Emergencia Paciente ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Contacto Emergencia Paciente {{ id }}?"
+      },
+      "detail": {
+        "title": "Contacto Emergencia Paciente"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "telefono": "Telefono",
+      "direccion": "Direccion",
+      "paciente": "Paciente",
+      "parentezco": "Parentezco",
+      "help": {
+        "nombre": "nombre",
+        "telefono": "telefono",
+        "direccion": "direccion"
+      }
+    }
+  }
+}

@@ -1,0 +1,179 @@
+<div>
+  <h2 id="page-heading" data-cy="Formulario053ContrareferenciaHeading">
+    <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.home.title">Formulario 053 Contrareferencias</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-formulario-053-contrareferencia"
+        [routerLink]="['/formulario-053-contrareferencia/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.home.createLabel"
+          >Create a new Formulario 053 Contrareferencia</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (formulario053Contrareferencias?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.home.notFound"
+        >No Formulario 053 Contrareferencias found</span
+      >
+    </div>
+  }
+
+  @if (formulario053Contrareferencias && formulario053Contrareferencias.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hallazgosRelevantes">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.hallazgosRelevantes"
+                  >Hallazgos Relevantes</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="resumen">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.resumen">Resumen</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tratamientoProcedimientosRealizados">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.tratamientoProcedimientosRealizados"
+                  >Tratamiento Procedimientos Realizados</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tratamientoRecomendado">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.tratamientoRecomendado"
+                  >Tratamiento Recomendado</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="referenciaJustificada">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.referenciaJustificada"
+                  >Referencia Justificada</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="formulario.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.formulario">Formulario</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (formulario053Contrareferencia of formulario053Contrareferencias; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/formulario-053-contrareferencia', formulario053Contrareferencia.id, 'view']">{{
+                  formulario053Contrareferencia.id
+                }}</a>
+              </td>
+              <td>{{ formulario053Contrareferencia.hallazgosRelevantes }}</td>
+              <td>{{ formulario053Contrareferencia.resumen }}</td>
+              <td>{{ formulario053Contrareferencia.tratamientoProcedimientosRealizados }}</td>
+              <td>{{ formulario053Contrareferencia.tratamientoRecomendado }}</td>
+              <td>{{ formulario053Contrareferencia.referenciaJustificada }}</td>
+              <td>
+                @if (formulario053Contrareferencia.formulario) {
+                  <div>
+                    <a [routerLink]="['/formulario-053', formulario053Contrareferencia.formulario.id, 'view']">{{
+                      formulario053Contrareferencia.formulario.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/formulario-053-contrareferencia', formulario053Contrareferencia.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/formulario-053-contrareferencia', formulario053Contrareferencia.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button
+                    type="submit"
+                    (click)="delete(formulario053Contrareferencia)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (formulario053Contrareferencias && formulario053Contrareferencias.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

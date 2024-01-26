@@ -1,0 +1,39 @@
+{
+  "gatewayApp": {
+    "establecimientosHorarioEstablecimiento": {
+      "home": {
+        "title": "Horario Establecimientos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Horario Establecimiento",
+        "createOrEditLabel": "Crear o editar Horario Establecimiento",
+        "notFound": "Ningún Horario Establecimientos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Horario Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Horario Establecimiento"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "numeroHoras": "Numero Horas",
+      "descripcion": "Descripcion",
+      "horaInicio": "Hora Inicio",
+      "horaFin": "Hora Fin",
+      "help": {
+        "nombre": "nombre",
+        "numeroHoras": "numeroHoras",
+        "descripcion": "descripcion",
+        "horaInicio": "hora inicio",
+        "horaFin": "hora fin"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosHorarioEstablecimiento": {
+      "created": "Un nuevo Horario Establecimiento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Horario Establecimiento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Horario Establecimiento ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

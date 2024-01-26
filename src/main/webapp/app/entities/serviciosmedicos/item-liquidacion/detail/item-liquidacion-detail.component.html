@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (itemLiquidacion) {
+      <div>
+        <h2 data-cy="itemLiquidacionDetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.detail.title">Item Liquidacion</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ itemLiquidacion.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.fecha"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosItemLiquidacion.help.fecha' | translate"
+              >Fecha</span
+            >
+          </dt>
+          <dd>
+            <span>{{ itemLiquidacion.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.habilitado"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosItemLiquidacion.help.habilitado' | translate"
+              >Habilitado</span
+            >
+          </dt>
+          <dd>
+            <span>{{ itemLiquidacion.habilitado }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosItemLiquidacion.continuidad">Continuidad</span></dt>
+          <dd>
+            @if (itemLiquidacion.continuidad) {
+              <div>
+                <a [routerLink]="['/continuidad-asistencial', itemLiquidacion.continuidad.id, 'view']">{{
+                  itemLiquidacion.continuidad.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/item-liquidacion', itemLiquidacion.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

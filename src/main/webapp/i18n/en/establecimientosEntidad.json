@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "establecimientosEntidad": {
+      "home": {
+        "title": "Entidads",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Entidad",
+        "createOrEditLabel": "Create or edit a Entidad",
+        "notFound": "No Entidads found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Entidad {{ id }}?"
+      },
+      "detail": {
+        "title": "Entidad"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "ruc": "Ruc",
+      "help": {
+        "codigo": "codigo de la entidad",
+        "nombre": "nombre de la entidad",
+        "ruc": "ruc de la entidad"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosEntidad": {
+      "created": "A new Entidad is created with identifier {{ param }}",
+      "updated": "A Entidad is updated with identifier {{ param }}",
+      "deleted": "A Entidad is deleted with identifier {{ param }}"
+    }
+  }
+}

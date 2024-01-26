@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "establecimientosCanton": {
+      "home": {
+        "title": "Cantons",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Canton",
+        "createOrEditLabel": "Create or edit a Canton",
+        "notFound": "No Cantons found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Canton {{ id }}?"
+      },
+      "detail": {
+        "title": "Canton"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "distrito": "Distrito",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosCanton": {
+      "created": "A new Canton is created with identifier {{ param }}",
+      "updated": "A Canton is updated with identifier {{ param }}",
+      "deleted": "A Canton is deleted with identifier {{ param }}"
+    }
+  }
+}

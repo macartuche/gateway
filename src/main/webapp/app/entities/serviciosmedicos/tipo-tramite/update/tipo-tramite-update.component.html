@@ -1,0 +1,93 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-tipo-tramite-heading"
+        data-cy="TipoTramiteCreateUpdateHeading"
+        jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.home.createOrEditLabel"
+      >
+        Create or edit a Tipo Tramite
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.nombre"
+            for="field_nombre"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosTipoTramite.help.nombre' | translate"
+            >Nombre</label
+          >
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          @if (editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)) {
+            <div>
+              @if (editForm.get('nombre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.codigo"
+            for="field_codigo"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosTipoTramite.help.codigo' | translate"
+            >Codigo</label
+          >
+          <input type="text" class="form-control" name="codigo" id="field_codigo" data-cy="codigo" formControlName="codigo" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.estadosId"
+            for="field_estadosId"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosTipoTramite.help.estadosId' | translate"
+            >Estados Id</label
+          >
+          <input type="number" class="form-control" name="estadosId" id="field_estadosId" data-cy="estadosId" formControlName="estadosId" />
+          @if (editForm.get('estadosId')!.invalid && (editForm.get('estadosId')!.dirty || editForm.get('estadosId')!.touched)) {
+            <div>
+              @if (editForm.get('estadosId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('estadosId')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

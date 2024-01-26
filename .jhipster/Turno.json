@@ -1,0 +1,56 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153224"
+  },
+  "applications": ["gateway", "citasmedicas"],
+  "clientRootFolder": "citasmedicas",
+  "databaseType": "sql",
+  "documentation": "The Turno entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "turno",
+  "fields": [
+    {
+      "documentation": "orden del turno",
+      "fieldName": "orden",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "horaInicio",
+      "fieldName": "horaInicio",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "horaFin",
+      "fieldName": "horaFin",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "activo?",
+      "fieldName": "activo",
+      "fieldType": "Boolean"
+    },
+    {
+      "documentation": "es turno extra?",
+      "fieldName": "extra",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "citasmedicas",
+  "name": "Turno",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "detalleCronograma",
+      "relationshipName": "detalleCronograma",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

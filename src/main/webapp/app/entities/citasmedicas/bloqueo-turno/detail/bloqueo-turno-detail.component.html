@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (bloqueoTurno) {
+      <div>
+        <h2 data-cy="bloqueoTurnoDetailsHeading">
+          <span jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.detail.title">Bloqueo Turno</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ bloqueoTurno.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.fecha"
+              [ngbTooltip]="'gatewayApp.citasmedicasBloqueoTurno.help.fecha' | translate"
+              >Fecha</span
+            >
+          </dt>
+          <dd>
+            <span>{{ bloqueoTurno.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.explicacion"
+              [ngbTooltip]="'gatewayApp.citasmedicasBloqueoTurno.help.explicacion' | translate"
+              >Explicacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ bloqueoTurno.explicacion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.activo"
+              [ngbTooltip]="'gatewayApp.citasmedicasBloqueoTurno.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ bloqueoTurno.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.turno">Turno</span></dt>
+          <dd>
+            @if (bloqueoTurno.turno) {
+              <div>
+                <a [routerLink]="['/turno', bloqueoTurno.turno.id, 'view']">{{ bloqueoTurno.turno.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/bloqueo-turno', bloqueoTurno.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "parroquiaTerritorio": {
+      "home": {
+        "title": "Parroquia Territorios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Parroquia Territorio",
+        "createOrEditLabel": "Create or edit a Parroquia Territorio",
+        "notFound": "No Parroquia Territorios found"
+      },
+      "created": "A new Parroquia Territorio is created with identifier {{ param }}",
+      "updated": "A Parroquia Territorio is updated with identifier {{ param }}",
+      "deleted": "A Parroquia Territorio is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Parroquia Territorio {{ id }}?"
+      },
+      "detail": {
+        "title": "Parroquia Territorio"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "canton": "Canton",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre"
+      }
+    }
+  }
+}

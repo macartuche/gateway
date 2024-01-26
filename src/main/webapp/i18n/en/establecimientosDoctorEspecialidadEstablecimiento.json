@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "establecimientosDoctorEspecialidadEstablecimiento": {
+      "home": {
+        "title": "Doctor Especialidad Establecimientos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Doctor Especialidad Establecimiento",
+        "createOrEditLabel": "Create or edit a Doctor Especialidad Establecimiento",
+        "notFound": "No Doctor Especialidad Establecimientos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Doctor Especialidad Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Doctor Especialidad Establecimiento"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "doctorId": "Doctor Id",
+      "especialidadId": "Especialidad Id",
+      "establecimiento": "Establecimiento",
+      "help": {
+        "activo": "activo",
+        "doctorId": "doctorId",
+        "especialidadId": "especialidadId"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosDoctorEspecialidadEstablecimiento": {
+      "created": "A new Doctor Especialidad Establecimiento is created with identifier {{ param }}",
+      "updated": "A Doctor Especialidad Establecimiento is updated with identifier {{ param }}",
+      "deleted": "A Doctor Especialidad Establecimiento is deleted with identifier {{ param }}"
+    }
+  }
+}

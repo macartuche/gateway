@@ -1,0 +1,160 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-documento-tramite-heading"
+        data-cy="DocumentoTramiteCreateUpdateHeading"
+        jhiTranslate="gatewayApp.serviciosmedicosDocumentoTramite.home.createOrEditLabel"
+      >
+        Create or edit a Documento Tramite
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosDocumentoTramite.nombre"
+            for="field_nombre"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosDocumentoTramite.help.nombre' | translate"
+            >Nombre</label
+          >
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          @if (editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)) {
+            <div>
+              @if (editForm.get('nombre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosDocumentoTramite.fecha"
+            for="field_fecha"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosDocumentoTramite.help.fecha' | translate"
+            >Fecha</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fecha"
+              data-cy="fecha"
+              type="text"
+              class="form-control"
+              name="fecha"
+              ngbDatepicker
+              #fechaDp="ngbDatepicker"
+              formControlName="fecha"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (editForm.get('fecha')!.invalid && (editForm.get('fecha')!.dirty || editForm.get('fecha')!.touched)) {
+            <div>
+              @if (editForm.get('fecha')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosDocumentoTramite.url"
+            for="field_url"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosDocumentoTramite.help.url' | translate"
+            >Url</label
+          >
+          <input type="text" class="form-control" name="url" id="field_url" data-cy="url" formControlName="url" />
+          @if (editForm.get('url')!.invalid && (editForm.get('url')!.dirty || editForm.get('url')!.touched)) {
+            <div>
+              @if (editForm.get('url')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.serviciosmedicosDocumentoTramite.documento" for="field_documento"
+            >Documento</label
+          >
+          <select
+            class="form-control"
+            id="field_documento"
+            data-cy="documento"
+            name="documento"
+            formControlName="documento"
+            [compareWith]="compareDocumento"
+          >
+            @if (!editForm.get('documento')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (documentoOption of documentosSharedCollection; track $index) {
+              <option [ngValue]="documentoOption">{{ documentoOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['documento'])!.invalid && (editForm.get(['documento'])!.dirty || editForm.get(['documento'])!.touched)) {
+          <div>
+            @if (editForm.get(['documento'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.serviciosmedicosDocumentoTramite.tramite" for="field_tramite">Tramite</label>
+          <select
+            class="form-control"
+            id="field_tramite"
+            data-cy="tramite"
+            name="tramite"
+            formControlName="tramite"
+            [compareWith]="compareTramite"
+          >
+            @if (!editForm.get('tramite')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (tramiteOption of tramitesSharedCollection; track $index) {
+              <option [ngValue]="tramiteOption">{{ tramiteOption.codigoValidacion }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['tramite'])!.invalid && (editForm.get(['tramite'])!.dirty || editForm.get(['tramite'])!.touched)) {
+          <div>
+            @if (editForm.get(['tramite'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

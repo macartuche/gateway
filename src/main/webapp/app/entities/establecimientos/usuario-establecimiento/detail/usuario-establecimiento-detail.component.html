@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (usuarioEstablecimiento) {
+      <div>
+        <h2 data-cy="usuarioEstablecimientoDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosUsuarioEstablecimiento.detail.title">Usuario Establecimiento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ usuarioEstablecimiento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosUsuarioEstablecimiento.activo"
+              [ngbTooltip]="'gatewayApp.establecimientosUsuarioEstablecimiento.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ usuarioEstablecimiento.activo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosUsuarioEstablecimiento.usuarioId"
+              [ngbTooltip]="'gatewayApp.establecimientosUsuarioEstablecimiento.help.usuarioId' | translate"
+              >Usuario Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ usuarioEstablecimiento.usuarioId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosUsuarioEstablecimiento.tipoId"
+              [ngbTooltip]="'gatewayApp.establecimientosUsuarioEstablecimiento.help.tipoId' | translate"
+              >Tipo Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ usuarioEstablecimiento.tipoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosUsuarioEstablecimiento.establecimiento">Establecimiento</span></dt>
+          <dd>
+            @if (usuarioEstablecimiento.establecimiento) {
+              <div>
+                <a [routerLink]="['/establecimiento', usuarioEstablecimiento.establecimiento.id, 'view']">{{
+                  usuarioEstablecimiento.establecimiento.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/usuario-establecimiento', usuarioEstablecimiento.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

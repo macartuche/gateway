@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-bloqueo-turno-heading"
+        data-cy="BloqueoTurnoCreateUpdateHeading"
+        jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.home.createOrEditLabel"
+      >
+        Create or edit a Bloqueo Turno
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.fecha"
+            for="field_fecha"
+            [ngbTooltip]="'gatewayApp.citasmedicasBloqueoTurno.help.fecha' | translate"
+            >Fecha</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fecha"
+              data-cy="fecha"
+              type="text"
+              class="form-control"
+              name="fecha"
+              ngbDatepicker
+              #fechaDp="ngbDatepicker"
+              formControlName="fecha"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.explicacion"
+            for="field_explicacion"
+            [ngbTooltip]="'gatewayApp.citasmedicasBloqueoTurno.help.explicacion' | translate"
+            >Explicacion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="explicacion"
+            id="field_explicacion"
+            data-cy="explicacion"
+            formControlName="explicacion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.activo"
+            for="field_activo"
+            [ngbTooltip]="'gatewayApp.citasmedicasBloqueoTurno.help.activo' | translate"
+            >Activo</label
+          >
+          <input type="checkbox" class="form-check" name="activo" id="field_activo" data-cy="activo" formControlName="activo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.citasmedicasBloqueoTurno.turno" for="field_turno">Turno</label>
+          <select class="form-control" id="field_turno" data-cy="turno" name="turno" formControlName="turno" [compareWith]="compareTurno">
+            <option [ngValue]="null"></option>
+            @for (turnoOption of turnosSharedCollection; track $index) {
+              <option [ngValue]="turnoOption">{{ turnoOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

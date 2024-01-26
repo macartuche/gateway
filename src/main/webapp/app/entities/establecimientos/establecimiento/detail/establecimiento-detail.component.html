@@ -1,0 +1,152 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (establecimiento) {
+      <div>
+        <h2 data-cy="establecimientoDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosEstablecimiento.detail.title">Establecimiento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ establecimiento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.unicodigo"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.unicodigo' | translate"
+              >Unicodigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.unicodigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.nombre"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.barrio"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.barrio' | translate"
+              >Barrio</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.barrio }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.direccion"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.direccion' | translate"
+              >Direccion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.direccion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.referencia"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.referencia' | translate"
+              >Referencia</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.referencia }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.telefono"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.telefono' | translate"
+              >Telefono</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.telefono }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.ambitoId"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.ambitoId' | translate"
+              >Ambito Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.ambitoId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimiento.estadoId"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimiento.help.estadoId' | translate"
+              >Estado Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimiento.estadoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosEstablecimiento.parroquia">Parroquia</span></dt>
+          <dd>
+            @if (establecimiento.parroquia) {
+              <div>
+                <a [routerLink]="['/parroquia', establecimiento.parroquia.id, 'view']">{{ establecimiento.parroquia.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosEstablecimiento.entidad">Entidad</span></dt>
+          <dd>
+            @if (establecimiento.entidad) {
+              <div>
+                <a [routerLink]="['/entidad', establecimiento.entidad.id, 'view']">{{ establecimiento.entidad.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosEstablecimiento.institucion">Institucion</span></dt>
+          <dd>
+            @if (establecimiento.institucion) {
+              <div>
+                <a [routerLink]="['/institucion', establecimiento.institucion.id, 'view']">{{ establecimiento.institucion.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosEstablecimiento.tipo">Tipo</span></dt>
+          <dd>
+            @if (establecimiento.tipo) {
+              <div>
+                <a [routerLink]="['/tipo-establecimiento', establecimiento.tipo.id, 'view']">{{ establecimiento.tipo.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosEstablecimiento.horario">Horario</span></dt>
+          <dd>
+            @if (establecimiento.horario) {
+              <div>
+                <a [routerLink]="['/horario-establecimiento', establecimiento.horario.id, 'view']">{{ establecimiento.horario.nombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/establecimiento', establecimiento.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

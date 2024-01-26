@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (parametroSistema) {
+      <div>
+        <h2 data-cy="parametroSistemaDetailsHeading">
+          <span jhiTranslate="gatewayApp.parametroSistema.detail.title">Parametro Sistema</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ parametroSistema.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.parametroSistema.nombre" [ngbTooltip]="'gatewayApp.parametroSistema.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parametroSistema.nombre }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.parametroSistema.codigo" [ngbTooltip]="'gatewayApp.parametroSistema.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parametroSistema.codigo }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.parametroSistema.clase" [ngbTooltip]="'gatewayApp.parametroSistema.help.clase' | translate"
+              >Clase</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parametroSistema.clase }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.parametroSistema.valor" [ngbTooltip]="'gatewayApp.parametroSistema.help.valor' | translate"
+              >Valor</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parametroSistema.valor }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/parametro-sistema', parametroSistema.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

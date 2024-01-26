@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (funcionalidad) {
+      <div>
+        <h2 data-cy="funcionalidadDetailsHeading"><span jhiTranslate="gatewayApp.funcionalidad.detail.title">Funcionalidad</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ funcionalidad.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.funcionalidad.nombre" [ngbTooltip]="'gatewayApp.funcionalidad.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ funcionalidad.nombre }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.funcionalidad.descripcion" [ngbTooltip]="'gatewayApp.funcionalidad.help.descripcion' | translate"
+              >Descripcion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ funcionalidad.descripcion }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.funcionalidad.url" [ngbTooltip]="'gatewayApp.funcionalidad.help.url' | translate">Url</span>
+          </dt>
+          <dd>
+            <span>{{ funcionalidad.url }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.funcionalidad.activo" [ngbTooltip]="'gatewayApp.funcionalidad.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ funcionalidad.activo }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.funcionalidad.icono" [ngbTooltip]="'gatewayApp.funcionalidad.help.icono' | translate"
+              >Icono</span
+            >
+          </dt>
+          <dd>
+            <span>{{ funcionalidad.icono }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.funcionalidad.visible" [ngbTooltip]="'gatewayApp.funcionalidad.help.visible' | translate"
+              >Visible</span
+            >
+          </dt>
+          <dd>
+            <span>{{ funcionalidad.visible }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.funcionalidad.padre">Padre</span></dt>
+          <dd>
+            @if (funcionalidad.padre) {
+              <div>
+                <a [routerLink]="['/funcionalidad', funcionalidad.padre.id, 'view']">{{ funcionalidad.padre.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/funcionalidad', funcionalidad.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

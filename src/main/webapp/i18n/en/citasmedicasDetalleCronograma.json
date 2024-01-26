@@ -1,0 +1,40 @@
+{
+  "gatewayApp": {
+    "citasmedicasDetalleCronograma": {
+      "home": {
+        "title": "Detalle Cronogramas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Detalle Cronograma",
+        "createOrEditLabel": "Create or edit a Detalle Cronograma",
+        "notFound": "No Detalle Cronogramas found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Detalle Cronograma {{ id }}?"
+      },
+      "detail": {
+        "title": "Detalle Cronograma"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "cantidad": "Cantidad",
+      "activo": "Activo",
+      "fechaDesactivacion": "Fecha Desactivacion",
+      "tipoId": "Tipo Id",
+      "cronograma": "Cronograma",
+      "help": {
+        "fecha": "fecha",
+        "cantidad": "cantidad",
+        "activo": "activo?",
+        "fechaDesactivacion": "fecha desactivacion de turno",
+        "tipoId": "tipoId"
+      }
+    }
+  },
+  "citasmedicasApp": {
+    "citasmedicasDetalleCronograma": {
+      "created": "A new Detalle Cronograma is created with identifier {{ param }}",
+      "updated": "A Detalle Cronograma is updated with identifier {{ param }}",
+      "deleted": "A Detalle Cronograma is deleted with identifier {{ param }}"
+    }
+  }
+}

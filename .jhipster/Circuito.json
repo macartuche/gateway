@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151524"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Circuito entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "circuito",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Circuito",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Canton al que pertenece el circuito",
+      "otherEntityField": "nombre",
+      "otherEntityName": "canton",
+      "relationshipName": "canton",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

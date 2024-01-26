@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20240126152124"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The DoctorEspecialidadEstablecimiento entity.\\n@author A true hipster",
+  "dto": "mapstruct",
+  "entityTableName": "doctor_especialidad_establecimiento",
+  "fields": [
+    {
+      "documentation": "activo",
+      "fieldName": "activo",
+      "fieldType": "Boolean"
+    },
+    {
+      "documentation": "doctorId",
+      "fieldName": "doctorId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "especialidadId",
+      "fieldName": "especialidadId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "DoctorEspecialidadEstablecimiento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "establecimiento",
+      "relationshipName": "establecimiento",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

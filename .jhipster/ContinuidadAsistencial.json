@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154724"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The ContinuidadAsistencial entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "continuidad_asistencial",
+  "fields": [
+    {
+      "documentation": "observacion",
+      "fieldName": "observacion",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "servicioHospitalario",
+      "fieldName": "servicioHospitalario",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "ContinuidadAsistencial",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "itemCie",
+      "relationshipName": "itemCie",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

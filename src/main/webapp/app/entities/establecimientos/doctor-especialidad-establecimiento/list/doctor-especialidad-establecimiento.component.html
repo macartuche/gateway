@@ -1,0 +1,155 @@
+<div>
+  <h2 id="page-heading" data-cy="DoctorEspecialidadEstablecimientoHeading">
+    <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.home.title">Doctor Especialidad Establecimientos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-doctor-especialidad-establecimiento"
+        [routerLink]="['/doctor-especialidad-establecimiento/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.home.createLabel"
+          >Create a new Doctor Especialidad Establecimiento</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (doctorEspecialidadEstablecimientos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.home.notFound"
+        >No Doctor Especialidad Establecimientos found</span
+      >
+    </div>
+  }
+
+  @if (doctorEspecialidadEstablecimientos && doctorEspecialidadEstablecimientos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activo">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.activo">Activo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="doctorId">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.doctorId">Doctor Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="especialidadId">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.especialidadId">Especialidad Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="establecimiento.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.establecimiento">Establecimiento</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (doctorEspecialidadEstablecimiento of doctorEspecialidadEstablecimientos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/doctor-especialidad-establecimiento', doctorEspecialidadEstablecimiento.id, 'view']">{{
+                  doctorEspecialidadEstablecimiento.id
+                }}</a>
+              </td>
+              <td>{{ doctorEspecialidadEstablecimiento.activo }}</td>
+              <td>{{ doctorEspecialidadEstablecimiento.doctorId }}</td>
+              <td>{{ doctorEspecialidadEstablecimiento.especialidadId }}</td>
+              <td>
+                @if (doctorEspecialidadEstablecimiento.establecimiento) {
+                  <div>
+                    <a [routerLink]="['/establecimiento', doctorEspecialidadEstablecimiento.establecimiento.id, 'view']">{{
+                      doctorEspecialidadEstablecimiento.establecimiento.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/doctor-especialidad-establecimiento', doctorEspecialidadEstablecimiento.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/doctor-especialidad-establecimiento', doctorEspecialidadEstablecimiento.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button
+                    type="submit"
+                    (click)="delete(doctorEspecialidadEstablecimiento)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (doctorEspecialidadEstablecimientos && doctorEspecialidadEstablecimientos.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

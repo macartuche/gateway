@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (tarifario) {
+      <div>
+        <h2 data-cy="tarifarioDetailsHeading"><span jhiTranslate="gatewayApp.serviciosmedicosTarifario.detail.title">Tarifario</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ tarifario.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTarifario.codigo"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTarifario.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tarifario.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTarifario.descripcion"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTarifario.help.descripcion' | translate"
+              >Descripcion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tarifario.descripcion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTarifario.valor"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTarifario.help.valor' | translate"
+              >Valor</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tarifario.valor }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/tarifario', tarifario.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

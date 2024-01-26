@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosMotivoReferencia": {
+      "home": {
+        "title": "Motivo Referencias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Motivo Referencia",
+        "createOrEditLabel": "Crear o editar Motivo Referencia",
+        "notFound": "Ningún Motivo Referencias encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Motivo Referencia {{ id }}?"
+      },
+      "detail": {
+        "title": "Motivo Referencia"
+      },
+      "id": "ID",
+      "detalle": "Detalle",
+      "tipoId": "Tipo Id",
+      "referencia": "Referencia",
+      "help": {
+        "detalle": "detalle",
+        "tipoId": "tipoId"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosMotivoReferencia": {
+      "created": "Un nuevo Motivo Referencia ha sido creado con el identificador {{ param }}",
+      "updated": "Un Motivo Referencia ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Motivo Referencia ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

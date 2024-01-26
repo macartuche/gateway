@@ -1,0 +1,155 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-formulario-053-contrareferencia-heading"
+        data-cy="Formulario053ContrareferenciaCreateUpdateHeading"
+        jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.home.createOrEditLabel"
+      >
+        Create or edit a Formulario 053 Contrareferencia
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.hallazgosRelevantes"
+            for="field_hallazgosRelevantes"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.hallazgosRelevantes' | translate"
+            >Hallazgos Relevantes</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hallazgosRelevantes"
+            id="field_hallazgosRelevantes"
+            data-cy="hallazgosRelevantes"
+            formControlName="hallazgosRelevantes"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.resumen"
+            for="field_resumen"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.resumen' | translate"
+            >Resumen</label
+          >
+          <input type="text" class="form-control" name="resumen" id="field_resumen" data-cy="resumen" formControlName="resumen" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.tratamientoProcedimientosRealizados"
+            for="field_tratamientoProcedimientosRealizados"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.tratamientoProcedimientosRealizados' | translate"
+            >Tratamiento Procedimientos Realizados</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="tratamientoProcedimientosRealizados"
+            id="field_tratamientoProcedimientosRealizados"
+            data-cy="tratamientoProcedimientosRealizados"
+            formControlName="tratamientoProcedimientosRealizados"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.tratamientoRecomendado"
+            for="field_tratamientoRecomendado"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.tratamientoRecomendado' | translate"
+            >Tratamiento Recomendado</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="tratamientoRecomendado"
+            id="field_tratamientoRecomendado"
+            data-cy="tratamientoRecomendado"
+            formControlName="tratamientoRecomendado"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.referenciaJustificada"
+            for="field_referenciaJustificada"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.referenciaJustificada' | translate"
+            >Referencia Justificada</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="referenciaJustificada"
+            id="field_referenciaJustificada"
+            data-cy="referenciaJustificada"
+            formControlName="referenciaJustificada"
+          />
+          @if (
+            editForm.get('referenciaJustificada')!.invalid &&
+            (editForm.get('referenciaJustificada')!.dirty || editForm.get('referenciaJustificada')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('referenciaJustificada')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.formulario"
+            for="field_formulario"
+            >Formulario</label
+          >
+          <select
+            class="form-control"
+            id="field_formulario"
+            data-cy="formulario"
+            name="formulario"
+            formControlName="formulario"
+            [compareWith]="compareFormulario053"
+          >
+            <option [ngValue]="null"></option>
+            @for (formulario053Option of formulario053sSharedCollection; track $index) {
+              <option [ngValue]="formulario053Option">{{ formulario053Option.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

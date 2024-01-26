@@ -1,0 +1,41 @@
+{
+  "gatewayApp": {
+    "citasmedicasCronograma": {
+      "home": {
+        "title": "Cronogramas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cronograma",
+        "createOrEditLabel": "Create or edit a Cronograma",
+        "notFound": "No Cronogramas found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Cronograma {{ id }}?"
+      },
+      "detail": {
+        "title": "Cronograma"
+      },
+      "id": "ID",
+      "fechaInicio": "Fecha Inicio",
+      "fechaFin": "Fecha Fin",
+      "activo": "Activo",
+      "especialidadId": "Especialidad Id",
+      "doctorId": "Doctor Id",
+      "establecimientoId": "Establecimiento Id",
+      "help": {
+        "fechaInicio": "fecha de inicio de cronograma",
+        "fechaFin": "fecha de fin de cronograma",
+        "activo": "cronograma activo?",
+        "especialidadId": "especialidadId",
+        "doctorId": "doctorId",
+        "establecimientoId": "establecimientoId"
+      }
+    }
+  },
+  "citasmedicasApp": {
+    "citasmedicasCronograma": {
+      "created": "A new Cronograma is created with identifier {{ param }}",
+      "updated": "A Cronograma is updated with identifier {{ param }}",
+      "deleted": "A Cronograma is deleted with identifier {{ param }}"
+    }
+  }
+}

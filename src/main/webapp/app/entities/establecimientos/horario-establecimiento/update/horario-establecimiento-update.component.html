@@ -1,0 +1,149 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-horario-establecimiento-heading"
+        data-cy="HorarioEstablecimientoCreateUpdateHeading"
+        jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.home.createOrEditLabel"
+      >
+        Create or edit a Horario Establecimiento
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.nombre"
+            for="field_nombre"
+            [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.nombre' | translate"
+            >Nombre</label
+          >
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          @if (editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)) {
+            <div>
+              @if (editForm.get('nombre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.numeroHoras"
+            for="field_numeroHoras"
+            [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.numeroHoras' | translate"
+            >Numero Horas</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroHoras"
+            id="field_numeroHoras"
+            data-cy="numeroHoras"
+            formControlName="numeroHoras"
+          />
+          @if (editForm.get('numeroHoras')!.invalid && (editForm.get('numeroHoras')!.dirty || editForm.get('numeroHoras')!.touched)) {
+            <div>
+              @if (editForm.get('numeroHoras')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('numeroHoras')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.descripcion"
+            for="field_descripcion"
+            [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.descripcion' | translate"
+            >Descripcion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.horaInicio"
+            for="field_horaInicio"
+            [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.horaInicio' | translate"
+            >Hora Inicio</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horaInicio"
+              data-cy="horaInicio"
+              type="datetime-local"
+              class="form-control"
+              name="horaInicio"
+              formControlName="horaInicio"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.horaFin"
+            for="field_horaFin"
+            [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.horaFin' | translate"
+            >Hora Fin</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horaFin"
+              data-cy="horaFin"
+              type="datetime-local"
+              class="form-control"
+              name="horaFin"
+              formControlName="horaFin"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

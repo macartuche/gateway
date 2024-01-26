@@ -1,0 +1,75 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153124"
+  },
+  "applications": ["gateway", "citasmedicas"],
+  "clientRootFolder": "citasmedicas",
+  "databaseType": "sql",
+  "documentation": "The CitaMedica entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "cita_medica",
+  "fields": [
+    {
+      "documentation": "fecha de cita medica",
+      "fieldName": "fechaInicioAtencion",
+      "fieldType": "LocalDate"
+    },
+    {
+      "documentation": "hora finalizacion atencion cita medica",
+      "fieldName": "fechaFinAtencion",
+      "fieldType": "LocalDate"
+    },
+    {
+      "documentation": "hora inicio atencion cita medica",
+      "fieldName": "horaInicioAtencion",
+      "fieldType": "Instant"
+    },
+    {
+      "documentation": "hora finalizacion atencion de cita medica",
+      "fieldName": "horaFinAtencion",
+      "fieldType": "Instant"
+    },
+    {
+      "documentation": "cita activa, no borrada",
+      "fieldName": "activa",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "observacion cita medica",
+      "fieldName": "observacion",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "estadoId",
+      "fieldName": "estadoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "pacienteId",
+      "fieldName": "pacienteId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "tramiteId",
+      "fieldName": "tramiteId",
+      "fieldType": "Long"
+    }
+  ],
+  "microserviceName": "citasmedicas",
+  "name": "CitaMedica",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "turno",
+      "relationshipName": "turno",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

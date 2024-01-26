@@ -1,0 +1,32 @@
+@if (formulario053Referencia) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(formulario053Referencia.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="formulario053ReferenciaDeleteDialogHeading" jhiTranslate="entity.delete.title">
+        Confirm delete operation
+      </h4>
+
+      <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-formulario053Referencia-heading"
+        jhiTranslate="gatewayApp.serviciosmedicosFormulario053Referencia.delete.question"
+        [translateValues]="{ id: formulario053Referencia.id }"
+      >
+        Are you sure you want to delete Formulario 053 Referencia {{ formulario053Referencia.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-formulario053Referencia" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
+      </button>
+    </div>
+  </form>
+}

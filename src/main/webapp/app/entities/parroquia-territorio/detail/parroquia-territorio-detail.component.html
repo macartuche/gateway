@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (parroquiaTerritorio) {
+      <div>
+        <h2 data-cy="parroquiaTerritorioDetailsHeading">
+          <span jhiTranslate="gatewayApp.parroquiaTerritorio.detail.title">Parroquia Territorio</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ parroquiaTerritorio.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.parroquiaTerritorio.codigo"
+              [ngbTooltip]="'gatewayApp.parroquiaTerritorio.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parroquiaTerritorio.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.parroquiaTerritorio.nombre"
+              [ngbTooltip]="'gatewayApp.parroquiaTerritorio.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ parroquiaTerritorio.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.parroquiaTerritorio.canton">Canton</span></dt>
+          <dd>
+            @if (parroquiaTerritorio.canton) {
+              <div>
+                <a [routerLink]="['/canton-territorio', parroquiaTerritorio.canton.id, 'view']">{{ parroquiaTerritorio.canton.nombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/parroquia-territorio', parroquiaTerritorio.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

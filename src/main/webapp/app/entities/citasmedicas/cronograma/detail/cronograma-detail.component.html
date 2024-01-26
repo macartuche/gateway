@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (cronograma) {
+      <div>
+        <h2 data-cy="cronogramaDetailsHeading"><span jhiTranslate="gatewayApp.citasmedicasCronograma.detail.title">Cronograma</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ cronograma.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCronograma.fechaInicio"
+              [ngbTooltip]="'gatewayApp.citasmedicasCronograma.help.fechaInicio' | translate"
+              >Fecha Inicio</span
+            >
+          </dt>
+          <dd>
+            <span>{{ cronograma.fechaInicio | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCronograma.fechaFin"
+              [ngbTooltip]="'gatewayApp.citasmedicasCronograma.help.fechaFin' | translate"
+              >Fecha Fin</span
+            >
+          </dt>
+          <dd>
+            <span>{{ cronograma.fechaFin | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCronograma.activo"
+              [ngbTooltip]="'gatewayApp.citasmedicasCronograma.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ cronograma.activo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCronograma.especialidadId"
+              [ngbTooltip]="'gatewayApp.citasmedicasCronograma.help.especialidadId' | translate"
+              >Especialidad Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ cronograma.especialidadId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCronograma.doctorId"
+              [ngbTooltip]="'gatewayApp.citasmedicasCronograma.help.doctorId' | translate"
+              >Doctor Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ cronograma.doctorId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasCronograma.establecimientoId"
+              [ngbTooltip]="'gatewayApp.citasmedicasCronograma.help.establecimientoId' | translate"
+              >Establecimiento Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ cronograma.establecimientoId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cronograma', cronograma.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

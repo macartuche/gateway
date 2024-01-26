@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Persona.
+    -->
+    <changeSet id="20240126150924-1" author="jhipster">
+        <createTable tableName="persona" remarks="The Persona entity.\n@author Usuario">
+            <column name="id" type="bigint" autoIncrement="true" startWith="1500">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="identificacion" type="varchar(255)" remarks="identificacion">
+                <constraints nullable="false" />
+            </column>
+            <column name="primer_apellido" type="varchar(255)" remarks="primer apellido">
+                <constraints nullable="false" />
+            </column>
+            <column name="segundo_apellido" type="varchar(255)" remarks="segundo apellido">
+                <constraints nullable="true" />
+            </column>
+            <column name="primer_nombre" type="varchar(255)" remarks="primer Nombre">
+                <constraints nullable="false" />
+            </column>
+            <column name="segundo_nombre" type="varchar(255)" remarks="segundo Nombre">
+                <constraints nullable="true" />
+            </column>
+            <column name="celular" type="varchar(255)" remarks="celular">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefono_convencional" type="varchar(255)" remarks="telefono convencional">
+                <constraints nullable="true" />
+            </column>
+            <column name="correo" type="varchar(255)" remarks="correo">
+                <constraints nullable="true" />
+            </column>
+            <column name="tipo_identificacion_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="nacionalidad_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="usuario_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="genero_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="estado_civil_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="nivel_educacion_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="estado_nivel_educacion_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240126150924-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/persona.csv"
+                  separator=";"
+                  tableName="persona"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="identificacion" type="string"/>
+            <column name="primer_apellido" type="string"/>
+            <column name="segundo_apellido" type="string"/>
+            <column name="primer_nombre" type="string"/>
+            <column name="segundo_nombre" type="string"/>
+            <column name="celular" type="string"/>
+            <column name="telefono_convencional" type="string"/>
+            <column name="correo" type="string"/>
+            <column name="tipo_identificacion_id" type="numeric"/>
+            <column name="nacionalidad_id" type="numeric"/>
+            <column name="genero_id" type="numeric"/>
+            <column name="estado_civil_id" type="numeric"/>
+            <column name="nivel_educacion_id" type="numeric"/>
+            <column name="estado_nivel_educacion_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

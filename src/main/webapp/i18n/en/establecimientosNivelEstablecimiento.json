@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "establecimientosNivelEstablecimiento": {
+      "home": {
+        "title": "Nivel Establecimientos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nivel Establecimiento",
+        "createOrEditLabel": "Create or edit a Nivel Establecimiento",
+        "notFound": "No Nivel Establecimientos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Nivel Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Nivel Establecimiento"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre",
+        "descripcion": "descripcion"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosNivelEstablecimiento": {
+      "created": "A new Nivel Establecimiento is created with identifier {{ param }}",
+      "updated": "A Nivel Establecimiento is updated with identifier {{ param }}",
+      "deleted": "A Nivel Establecimiento is deleted with identifier {{ param }}"
+    }
+  }
+}

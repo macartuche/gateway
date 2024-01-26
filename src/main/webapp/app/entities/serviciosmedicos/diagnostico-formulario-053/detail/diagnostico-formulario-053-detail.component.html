@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (diagnosticoFormulario053) {
+      <div>
+        <h2 data-cy="diagnosticoFormulario053DetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.detail.title">Diagnostico Formulario 053</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ diagnosticoFormulario053.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.dep"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosDiagnosticoFormulario053.help.dep' | translate"
+              >Dep</span
+            >
+          </dt>
+          <dd>
+            <span>{{ diagnosticoFormulario053.dep }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.pre"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosDiagnosticoFormulario053.help.pre' | translate"
+              >Pre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ diagnosticoFormulario053.pre }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.referencia">Referencia</span></dt>
+          <dd>
+            @if (diagnosticoFormulario053.referencia) {
+              <div>
+                <a [routerLink]="['/formulario-053-referencia', diagnosticoFormulario053.referencia.id, 'view']">{{
+                  diagnosticoFormulario053.referencia.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.contrareferencia">Contrareferencia</span></dt>
+          <dd>
+            @if (diagnosticoFormulario053.contrareferencia) {
+              <div>
+                <a [routerLink]="['/formulario-053-contrareferencia', diagnosticoFormulario053.contrareferencia.id, 'view']">{{
+                  diagnosticoFormulario053.contrareferencia.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.itemCie">Item Cie</span></dt>
+          <dd>
+            @if (diagnosticoFormulario053.itemCie) {
+              <div>
+                <a [routerLink]="['/item-cie', diagnosticoFormulario053.itemCie.id, 'view']">{{
+                  diagnosticoFormulario053.itemCie.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/diagnostico-formulario-053', diagnosticoFormulario053.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

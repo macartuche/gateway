@@ -1,0 +1,158 @@
+{
+  "annotations": {
+    "changelogDate": "20240126152524"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The Paciente entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "paciente",
+  "fields": [
+    {
+      "documentation": "lugarNacimiento",
+      "fieldName": "lugarNacimiento",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "fecha de nacimiento",
+      "fieldName": "fechaNacimiento",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "calle principal",
+      "fieldName": "callePrincipal",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "numero",
+      "fieldName": "numeroCasa",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "calle secundaria",
+      "fieldName": "calleSecundaria",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "barrio",
+      "fieldName": "barrio",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "referencia de domicilio",
+      "fieldName": "referenciaDomicilio",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "seguro Salud Secundario",
+      "fieldName": "seguroSaludSecundario",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "identificacion de representante en caso de aplicar",
+      "fieldName": "identificacionRepresentante",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Paciente",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "discapacidad de persona en el caso de ser aplicable",
+      "otherEntityName": "discapacidad",
+      "relationshipName": "discapacidad",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "primerNombre",
+      "otherEntityName": "persona",
+      "relationshipName": "persona",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "parroquiaTerritorio",
+      "relationshipName": "parroquiaNacimiento",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "parroquiaTerritorio",
+      "relationshipName": "parroquiaResidencia",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "autoidentificacionEtnica",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "nacionalidadEtnica",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "pueblo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "tipoEmpresaTrabajo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "profesionOcupacion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "seguroSaludPrincipal",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "tipoBono",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "procedenciaRepresentante",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

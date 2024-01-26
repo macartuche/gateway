@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "establecimientosCircuito": {
+      "home": {
+        "title": "Circuitos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Circuito",
+        "createOrEditLabel": "Crear o editar Circuito",
+        "notFound": "Ningún Circuitos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Circuito {{ id }}?"
+      },
+      "detail": {
+        "title": "Circuito"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "canton": "Canton",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosCircuito": {
+      "created": "Un nuevo Circuito ha sido creado con el identificador {{ param }}",
+      "updated": "Un Circuito ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Circuito ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

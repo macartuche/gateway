@@ -1,0 +1,41 @@
+{
+  "annotations": {
+    "changelogDate": "20240126150424"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The Catalogo entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "catalogo",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "documentation": "descripcion",
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Catalogo",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "items",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

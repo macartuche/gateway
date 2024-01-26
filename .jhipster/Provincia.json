@@ -1,0 +1,41 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151224"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Provincia entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "provincia",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Provincia",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "zona a la que pertenece la provincia",
+      "otherEntityField": "nombre",
+      "otherEntityName": "zona",
+      "relationshipName": "zona",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

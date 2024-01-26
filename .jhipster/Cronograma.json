@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20240126152924"
+  },
+  "applications": ["gateway", "citasmedicas"],
+  "clientRootFolder": "citasmedicas",
+  "databaseType": "sql",
+  "documentation": "The Cronograma entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "cronograma",
+  "fields": [
+    {
+      "documentation": "fecha de inicio de cronograma",
+      "fieldName": "fechaInicio",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "fecha de fin de cronograma",
+      "fieldName": "fechaFin",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "cronograma activo?",
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "especialidadId",
+      "fieldName": "especialidadId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "doctorId",
+      "fieldName": "doctorId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "establecimientoId",
+      "fieldName": "establecimientoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "citasmedicas",
+  "name": "Cronograma",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20240126155424"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The TipoEstablecimiento entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "tipo_establecimiento",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "descripcion",
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "TipoEstablecimiento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "nivelEstablecimiento",
+      "relationshipName": "nivel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

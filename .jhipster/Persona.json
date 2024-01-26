@@ -1,0 +1,119 @@
+{
+  "annotations": {
+    "changelogDate": "20240126150924"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The Persona entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "persona",
+  "fields": [
+    {
+      "documentation": "identificacion",
+      "fieldName": "identificacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "primer apellido",
+      "fieldName": "primerApellido",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "segundo apellido",
+      "fieldName": "segundoApellido",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "primer Nombre",
+      "fieldName": "primerNombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "segundo Nombre",
+      "fieldName": "segundoNombre",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "celular",
+      "fieldName": "celular",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "telefono convencional",
+      "fieldName": "telefonoConvencional",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "correo",
+      "fieldName": "correo",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Persona",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Tipo de identificacion",
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "tipoIdentificacion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "nacionalidad",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "documentation": "Usuario asociado a persona",
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "usuario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "genero",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "estadoCivil",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "nivelEducacion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "estadoNivelEducacion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

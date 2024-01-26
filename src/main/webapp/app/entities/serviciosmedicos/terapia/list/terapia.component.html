@@ -1,0 +1,168 @@
+<div>
+  <h2 id="page-heading" data-cy="TerapiaHeading">
+    <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.home.title">Terapias</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-terapia"
+        [routerLink]="['/terapia/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.home.createLabel">Create a new Terapia</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (terapias?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.home.notFound">No Terapias found</span>
+    </div>
+  }
+
+  @if (terapias && terapias.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cantidad">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.cantidad">Cantidad</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descripcion">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.descripcion">Descripcion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="habilitado">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.habilitado">Habilitado</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="valorUnitarioEstablecimiento">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.valorUnitarioEstablecimiento">Valor Unitario Establecimiento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="continuidad.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.continuidad">Continuidad</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="itemLiquidacion.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.itemLiquidacion">Item Liquidacion</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tarifario.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosTerapia.tarifario">Tarifario</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (terapia of terapias; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/terapia', terapia.id, 'view']">{{ terapia.id }}</a>
+              </td>
+              <td>{{ terapia.cantidad }}</td>
+              <td>{{ terapia.descripcion }}</td>
+              <td>{{ terapia.habilitado }}</td>
+              <td>{{ terapia.valorUnitarioEstablecimiento }}</td>
+              <td>
+                @if (terapia.continuidad) {
+                  <div>
+                    <a [routerLink]="['/continuidad-asistencial', terapia.continuidad.id, 'view']">{{ terapia.continuidad.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (terapia.itemLiquidacion) {
+                  <div>
+                    <a [routerLink]="['/item-liquidacion', terapia.itemLiquidacion.id, 'view']">{{ terapia.itemLiquidacion.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (terapia.tarifario) {
+                  <div>
+                    <a [routerLink]="['/tarifario', terapia.tarifario.id, 'view']">{{ terapia.tarifario.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/terapia', terapia.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/terapia', terapia.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(terapia)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (terapias && terapias.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

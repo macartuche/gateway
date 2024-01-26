@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (especialidad) {
+      <div>
+        <h2 data-cy="especialidadDetailsHeading"><span jhiTranslate="gatewayApp.especialidad.detail.title">Especialidad</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ especialidad.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.especialidad.nombre" [ngbTooltip]="'gatewayApp.especialidad.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ especialidad.nombre }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.especialidad.activa" [ngbTooltip]="'gatewayApp.especialidad.help.activa' | translate"
+              >Activa</span
+            >
+          </dt>
+          <dd>
+            <span>{{ especialidad.activa }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.especialidad.tipo">Tipo</span></dt>
+          <dd>
+            @if (especialidad.tipo) {
+              <div>
+                <a [routerLink]="['/catalogo-item', especialidad.tipo.id, 'view']">{{ especialidad.tipo.nombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/especialidad', especialidad.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

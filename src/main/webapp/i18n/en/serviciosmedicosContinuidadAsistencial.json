@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosContinuidadAsistencial": {
+      "home": {
+        "title": "Continuidad Asistencials",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Continuidad Asistencial",
+        "createOrEditLabel": "Create or edit a Continuidad Asistencial",
+        "notFound": "No Continuidad Asistencials found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Continuidad Asistencial {{ id }}?"
+      },
+      "detail": {
+        "title": "Continuidad Asistencial"
+      },
+      "id": "ID",
+      "observacion": "Observacion",
+      "servicioHospitalario": "Servicio Hospitalario",
+      "itemCie": "Item Cie",
+      "help": {
+        "observacion": "observacion",
+        "servicioHospitalario": "servicioHospitalario"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosContinuidadAsistencial": {
+      "created": "A new Continuidad Asistencial is created with identifier {{ param }}",
+      "updated": "A Continuidad Asistencial is updated with identifier {{ param }}",
+      "deleted": "A Continuidad Asistencial is deleted with identifier {{ param }}"
+    }
+  }
+}

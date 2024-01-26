@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154624"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Procedimiento entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "procedimiento",
+  "fields": [
+    {
+      "documentation": "fecha",
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "observacion",
+      "fieldName": "observacion",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "estadoId",
+      "fieldName": "estadoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "usuarioId",
+      "fieldName": "usuarioId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Procedimiento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "codigoValidacion",
+      "otherEntityName": "tramite",
+      "relationshipName": "tramite",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151824"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Institucion entity.\\n@author usuario",
+  "dto": "mapstruct",
+  "entityTableName": "institucion",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "permite Derivacion?",
+      "fieldName": "permiteDerivacion",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "permite Referencia?",
+      "fieldName": "permiteReferencia",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "permite Contrareferencia?",
+      "fieldName": "permiteContrareferencia",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "estadoId",
+      "fieldName": "estadoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Institucion",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

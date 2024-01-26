@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Discapacidad.
+    -->
+    <changeSet id="20240126151024-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="tipo_id"
+                                 baseTableName="discapacidad"
+                                 constraintName="fk_discapacidad__tipo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="estado_id"
+                                 baseTableName="discapacidad"
+                                 constraintName="fk_discapacidad__estado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+    </changeSet>
+</databaseChangeLog>

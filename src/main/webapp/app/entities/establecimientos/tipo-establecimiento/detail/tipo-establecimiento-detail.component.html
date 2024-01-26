@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (tipoEstablecimiento) {
+      <div>
+        <h2 data-cy="tipoEstablecimientoDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosTipoEstablecimiento.detail.title">Tipo Establecimiento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ tipoEstablecimiento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosTipoEstablecimiento.codigo"
+              [ngbTooltip]="'gatewayApp.establecimientosTipoEstablecimiento.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tipoEstablecimiento.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosTipoEstablecimiento.nombre"
+              [ngbTooltip]="'gatewayApp.establecimientosTipoEstablecimiento.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tipoEstablecimiento.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosTipoEstablecimiento.descripcion"
+              [ngbTooltip]="'gatewayApp.establecimientosTipoEstablecimiento.help.descripcion' | translate"
+              >Descripcion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tipoEstablecimiento.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosTipoEstablecimiento.nivel">Nivel</span></dt>
+          <dd>
+            @if (tipoEstablecimiento.nivel) {
+              <div>
+                <a [routerLink]="['/nivel-establecimiento', tipoEstablecimiento.nivel.id, 'view']">{{
+                  tipoEstablecimiento.nivel.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/tipo-establecimiento', tipoEstablecimiento.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

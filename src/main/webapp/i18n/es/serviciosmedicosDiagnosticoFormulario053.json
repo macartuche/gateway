@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosDiagnosticoFormulario053": {
+      "home": {
+        "title": "Diagnostico Formulario 053 S",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Diagnostico Formulario 053",
+        "createOrEditLabel": "Crear o editar Diagnostico Formulario 053",
+        "notFound": "Ningún Diagnostico Formulario 053 S encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Diagnostico Formulario 053 {{ id }}?"
+      },
+      "detail": {
+        "title": "Diagnostico Formulario 053"
+      },
+      "id": "ID",
+      "dep": "Dep",
+      "pre": "Pre",
+      "referencia": "Referencia",
+      "contrareferencia": "Contrareferencia",
+      "itemCie": "Item Cie",
+      "help": {
+        "dep": "dep",
+        "pre": "pre"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosDiagnosticoFormulario053": {
+      "created": "Un nuevo Diagnostico Formulario 053 ha sido creado con el identificador {{ param }}",
+      "updated": "Un Diagnostico Formulario 053 ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Diagnostico Formulario 053 ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

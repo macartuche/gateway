@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20240126152824"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Festivo entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "festivo",
+  "fields": [
+    {
+      "documentation": "nombre de periodo festivo",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "fecha de inicio de periodo festivo",
+      "fieldName": "fechaInicio",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "fecha de fin de periodo festivo",
+      "fieldName": "fechaFin",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "activo?",
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Festivo",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

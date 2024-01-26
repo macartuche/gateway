@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151024"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The Discapacidad entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "discapacidad",
+  "fields": [
+    {
+      "documentation": "porcentaje",
+      "fieldName": "porcentaje",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Discapacidad",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Tipo de discapacidad",
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "tipo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "documentation": "Estado de registro de discapacidad",
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "estado",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

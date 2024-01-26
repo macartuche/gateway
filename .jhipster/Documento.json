@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154424"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Documento entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "documento",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "requerido",
+      "fieldName": "requerido",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Documento",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

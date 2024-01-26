@@ -1,0 +1,40 @@
+{
+  "gatewayApp": {
+    "citasmedicasTurno": {
+      "home": {
+        "title": "Turnos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Turno",
+        "createOrEditLabel": "Create or edit a Turno",
+        "notFound": "No Turnos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Turno {{ id }}?"
+      },
+      "detail": {
+        "title": "Turno"
+      },
+      "id": "ID",
+      "orden": "Orden",
+      "horaInicio": "Hora Inicio",
+      "horaFin": "Hora Fin",
+      "activo": "Activo",
+      "extra": "Extra",
+      "detalleCronograma": "Detalle Cronograma",
+      "help": {
+        "orden": "orden del turno",
+        "horaInicio": "horaInicio",
+        "horaFin": "horaFin",
+        "activo": "activo?",
+        "extra": "es turno extra?"
+      }
+    }
+  },
+  "citasmedicasApp": {
+    "citasmedicasTurno": {
+      "created": "A new Turno is created with identifier {{ param }}",
+      "updated": "A Turno is updated with identifier {{ param }}",
+      "deleted": "A Turno is deleted with identifier {{ param }}"
+    }
+  }
+}

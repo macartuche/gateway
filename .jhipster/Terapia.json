@@ -1,0 +1,65 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154924"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Terapia entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "terapia",
+  "fields": [
+    {
+      "documentation": "cantidad",
+      "fieldName": "cantidad",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "descripcion",
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "habilitado",
+      "fieldName": "habilitado",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "valorUnitarioEstablecimiento",
+      "fieldName": "valorUnitarioEstablecimiento",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Terapia",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "continuidadAsistencial",
+      "relationshipName": "continuidad",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "itemLiquidacion",
+      "relationshipName": "itemLiquidacion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "tarifario",
+      "relationshipName": "tarifario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

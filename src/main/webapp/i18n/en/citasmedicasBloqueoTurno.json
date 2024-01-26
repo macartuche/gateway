@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "citasmedicasBloqueoTurno": {
+      "home": {
+        "title": "Bloqueo Turnos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Bloqueo Turno",
+        "createOrEditLabel": "Create or edit a Bloqueo Turno",
+        "notFound": "No Bloqueo Turnos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Bloqueo Turno {{ id }}?"
+      },
+      "detail": {
+        "title": "Bloqueo Turno"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "explicacion": "Explicacion",
+      "activo": "Activo",
+      "turno": "Turno",
+      "help": {
+        "fecha": "fecha",
+        "explicacion": "explicacion de bloqueo",
+        "activo": "bloqueo activo?"
+      }
+    }
+  },
+  "citasmedicasApp": {
+    "citasmedicasBloqueoTurno": {
+      "created": "A new Bloqueo Turno is created with identifier {{ param }}",
+      "updated": "A Bloqueo Turno is updated with identifier {{ param }}",
+      "deleted": "A Bloqueo Turno is deleted with identifier {{ param }}"
+    }
+  }
+}

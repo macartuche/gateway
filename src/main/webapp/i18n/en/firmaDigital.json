@@ -1,0 +1,33 @@
+{
+  "gatewayApp": {
+    "firmaDigital": {
+      "home": {
+        "title": "Firma Digitals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Firma Digital",
+        "createOrEditLabel": "Create or edit a Firma Digital",
+        "notFound": "No Firma Digitals found"
+      },
+      "created": "A new Firma Digital is created with identifier {{ param }}",
+      "updated": "A Firma Digital is updated with identifier {{ param }}",
+      "deleted": "A Firma Digital is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Firma Digital {{ id }}?"
+      },
+      "detail": {
+        "title": "Firma Digital"
+      },
+      "id": "ID",
+      "fechaDesde": "Fecha Desde",
+      "fechaHasta": "Fecha Hasta",
+      "path": "Path",
+      "tipo": "Tipo",
+      "persona": "Persona",
+      "help": {
+        "fechaDesde": "fechaDesde",
+        "fechaHasta": "fechaHasta",
+        "path": "path"
+      }
+    }
+  }
+}

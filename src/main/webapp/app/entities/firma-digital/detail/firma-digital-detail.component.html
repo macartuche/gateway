@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (firmaDigital) {
+      <div>
+        <h2 data-cy="firmaDigitalDetailsHeading"><span jhiTranslate="gatewayApp.firmaDigital.detail.title">Firma Digital</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ firmaDigital.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.firmaDigital.fechaDesde" [ngbTooltip]="'gatewayApp.firmaDigital.help.fechaDesde' | translate"
+              >Fecha Desde</span
+            >
+          </dt>
+          <dd>
+            <span>{{ firmaDigital.fechaDesde | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.firmaDigital.fechaHasta" [ngbTooltip]="'gatewayApp.firmaDigital.help.fechaHasta' | translate"
+              >Fecha Hasta</span
+            >
+          </dt>
+          <dd>
+            <span>{{ firmaDigital.fechaHasta | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.firmaDigital.path" [ngbTooltip]="'gatewayApp.firmaDigital.help.path' | translate">Path</span>
+          </dt>
+          <dd>
+            <span>{{ firmaDigital.path }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.firmaDigital.tipo">Tipo</span></dt>
+          <dd>
+            @if (firmaDigital.tipo) {
+              <div>
+                <a [routerLink]="['/catalogo-item', firmaDigital.tipo.id, 'view']">{{ firmaDigital.tipo.nombre }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.firmaDigital.persona">Persona</span></dt>
+          <dd>
+            @if (firmaDigital.persona) {
+              <div>
+                <a [routerLink]="['/persona', firmaDigital.persona.id, 'view']">{{ firmaDigital.persona.identificacion }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/firma-digital', firmaDigital.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "establecimientosZona": {
+      "home": {
+        "title": "Zonas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Zona",
+        "createOrEditLabel": "Crear o editar Zona",
+        "notFound": "Ningún Zonas encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Zona {{ id }}?"
+      },
+      "detail": {
+        "title": "Zona"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "estadoId": "Estado Id",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre",
+        "estadoId": "estadoId"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosZona": {
+      "created": "Un nuevo Zona ha sido creado con el identificador {{ param }}",
+      "updated": "Un Zona ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Zona ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

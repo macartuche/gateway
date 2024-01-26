@@ -1,0 +1,341 @@
+<div>
+  <h2 id="page-heading" data-cy="PacienteHeading">
+    <span jhiTranslate="gatewayApp.paciente.home.title">Pacientes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.paciente.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-paciente"
+        [routerLink]="['/paciente/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.paciente.home.createLabel">Create a new Paciente</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (pacientes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.paciente.home.notFound">No Pacientes found</span>
+    </div>
+  }
+
+  @if (pacientes && pacientes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lugarNacimiento">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.lugarNacimiento">Lugar Nacimiento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaNacimiento">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.fechaNacimiento">Fecha Nacimiento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="callePrincipal">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.callePrincipal">Calle Principal</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroCasa">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.numeroCasa">Numero Casa</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="calleSecundaria">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.calleSecundaria">Calle Secundaria</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="barrio">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.barrio">Barrio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="referenciaDomicilio">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.referenciaDomicilio">Referencia Domicilio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="seguroSaludSecundario">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.seguroSaludSecundario">Seguro Salud Secundario</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="identificacionRepresentante">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.identificacionRepresentante">Identificacion Representante</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="discapacidad.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.discapacidad">Discapacidad</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="persona.primerNombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.persona">Persona</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="parroquiaNacimiento.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.parroquiaNacimiento">Parroquia Nacimiento</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="parroquiaResidencia.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.parroquiaResidencia">Parroquia Residencia</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="autoidentificacionEtnica.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.autoidentificacionEtnica">Autoidentificacion Etnica</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nacionalidadEtnica.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.nacionalidadEtnica">Nacionalidad Etnica</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pueblo.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.pueblo">Pueblo</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoEmpresaTrabajo.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.tipoEmpresaTrabajo">Tipo Empresa Trabajo</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="profesionOcupacion.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.profesionOcupacion">Profesion Ocupacion</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="seguroSaludPrincipal.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.seguroSaludPrincipal">Seguro Salud Principal</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoBono.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.tipoBono">Tipo Bono</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="procedenciaRepresentante.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.paciente.procedenciaRepresentante">Procedencia Representante</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (paciente of pacientes; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/paciente', paciente.id, 'view']">{{ paciente.id }}</a>
+              </td>
+              <td>{{ paciente.lugarNacimiento }}</td>
+              <td>{{ paciente.fechaNacimiento | formatMediumDate }}</td>
+              <td>{{ paciente.callePrincipal }}</td>
+              <td>{{ paciente.numeroCasa }}</td>
+              <td>{{ paciente.calleSecundaria }}</td>
+              <td>{{ paciente.barrio }}</td>
+              <td>{{ paciente.referenciaDomicilio }}</td>
+              <td>{{ paciente.seguroSaludSecundario }}</td>
+              <td>{{ paciente.identificacionRepresentante }}</td>
+              <td>
+                @if (paciente.discapacidad) {
+                  <div>
+                    <a [routerLink]="['/discapacidad', paciente.discapacidad.id, 'view']">{{ paciente.discapacidad.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.persona) {
+                  <div>
+                    <a [routerLink]="['/persona', paciente.persona.id, 'view']">{{ paciente.persona.primerNombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.parroquiaNacimiento) {
+                  <div>
+                    <a [routerLink]="['/parroquia-territorio', paciente.parroquiaNacimiento.id, 'view']">{{
+                      paciente.parroquiaNacimiento.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.parroquiaResidencia) {
+                  <div>
+                    <a [routerLink]="['/parroquia-territorio', paciente.parroquiaResidencia.id, 'view']">{{
+                      paciente.parroquiaResidencia.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.autoidentificacionEtnica) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.autoidentificacionEtnica.id, 'view']">{{
+                      paciente.autoidentificacionEtnica.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.nacionalidadEtnica) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.nacionalidadEtnica.id, 'view']">{{
+                      paciente.nacionalidadEtnica.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.pueblo) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.pueblo.id, 'view']">{{ paciente.pueblo.nombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.tipoEmpresaTrabajo) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.tipoEmpresaTrabajo.id, 'view']">{{
+                      paciente.tipoEmpresaTrabajo.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.profesionOcupacion) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.profesionOcupacion.id, 'view']">{{
+                      paciente.profesionOcupacion.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.seguroSaludPrincipal) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.seguroSaludPrincipal.id, 'view']">{{
+                      paciente.seguroSaludPrincipal.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.tipoBono) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.tipoBono.id, 'view']">{{ paciente.tipoBono.nombre }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (paciente.procedenciaRepresentante) {
+                  <div>
+                    <a [routerLink]="['/catalogo-item', paciente.procedenciaRepresentante.id, 'view']">{{
+                      paciente.procedenciaRepresentante.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/paciente', paciente.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/paciente', paciente.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(paciente)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (pacientes && pacientes.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

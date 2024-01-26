@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153924"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The MotivoReferencia entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "motivo_referencia",
+  "fields": [
+    {
+      "documentation": "detalle",
+      "fieldName": "detalle",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "tipoId",
+      "fieldName": "tipoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "MotivoReferencia",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "formulario053Referencia",
+      "relationshipName": "referencia",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

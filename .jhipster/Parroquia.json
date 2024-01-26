@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151624"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Parroquia entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "parroquia",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "tipoId",
+      "fieldName": "tipoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Parroquia",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Circuito al que pertenece la parroquia",
+      "otherEntityField": "nombre",
+      "otherEntityName": "circuito",
+      "relationshipName": "circuito",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

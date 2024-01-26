@@ -1,0 +1,38 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosProcedimiento": {
+      "home": {
+        "title": "Procedimientos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Procedimiento",
+        "createOrEditLabel": "Crear o editar Procedimiento",
+        "notFound": "Ningún Procedimientos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Procedimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Procedimiento"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "observacion": "Observacion",
+      "estadoId": "Estado Id",
+      "usuarioId": "Usuario Id",
+      "tramite": "Tramite",
+      "help": {
+        "fecha": "fecha",
+        "observacion": "observacion",
+        "estadoId": "estadoId",
+        "usuarioId": "usuarioId"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosProcedimiento": {
+      "created": "Un nuevo Procedimiento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Procedimiento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Procedimiento ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

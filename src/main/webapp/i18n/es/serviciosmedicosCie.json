@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosCie": {
+      "home": {
+        "title": "Cies",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Cie",
+        "createOrEditLabel": "Crear o editar Cie",
+        "notFound": "Ningún Cies encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Cie {{ id }}?"
+      },
+      "detail": {
+        "title": "Cie"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "activo": "Activo",
+      "items": "Items",
+      "help": {
+        "nombre": "nombre",
+        "activo": "activo"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosCie": {
+      "created": "Un nuevo Cie ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cie ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cie ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

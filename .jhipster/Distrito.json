@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151324"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Distrito entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "distrito",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Distrito",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Provincia a la que pertenece el  distrito",
+      "otherEntityField": "nombre",
+      "otherEntityName": "provincia",
+      "relationshipName": "provincia",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

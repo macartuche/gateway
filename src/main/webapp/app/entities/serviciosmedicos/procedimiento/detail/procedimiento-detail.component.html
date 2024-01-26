@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (procedimiento) {
+      <div>
+        <h2 data-cy="procedimientoDetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosProcedimiento.detail.title">Procedimiento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ procedimiento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosProcedimiento.fecha"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosProcedimiento.help.fecha' | translate"
+              >Fecha</span
+            >
+          </dt>
+          <dd>
+            <span>{{ procedimiento.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosProcedimiento.observacion"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosProcedimiento.help.observacion' | translate"
+              >Observacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ procedimiento.observacion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosProcedimiento.estadoId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosProcedimiento.help.estadoId' | translate"
+              >Estado Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ procedimiento.estadoId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosProcedimiento.usuarioId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosProcedimiento.help.usuarioId' | translate"
+              >Usuario Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ procedimiento.usuarioId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosProcedimiento.tramite">Tramite</span></dt>
+          <dd>
+            @if (procedimiento.tramite) {
+              <div>
+                <a [routerLink]="['/tramite', procedimiento.tramite.id, 'view']">{{ procedimiento.tramite.codigoValidacion }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/procedimiento', procedimiento.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

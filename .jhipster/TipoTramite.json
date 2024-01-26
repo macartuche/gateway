@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154324"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The TipoTramite entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "tipo_tramite",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "estadosId",
+      "fieldName": "estadosId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "TipoTramite",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "documento",
+      "relationshipName": "documentos",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,533 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-paciente-heading" data-cy="PacienteCreateUpdateHeading" jhiTranslate="gatewayApp.paciente.home.createOrEditLabel">
+        Create or edit a Paciente
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.lugarNacimiento"
+            for="field_lugarNacimiento"
+            [ngbTooltip]="'gatewayApp.paciente.help.lugarNacimiento' | translate"
+            >Lugar Nacimiento</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lugarNacimiento"
+            id="field_lugarNacimiento"
+            data-cy="lugarNacimiento"
+            formControlName="lugarNacimiento"
+          />
+          @if (
+            editForm.get('lugarNacimiento')!.invalid && (editForm.get('lugarNacimiento')!.dirty || editForm.get('lugarNacimiento')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('lugarNacimiento')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.fechaNacimiento"
+            for="field_fechaNacimiento"
+            [ngbTooltip]="'gatewayApp.paciente.help.fechaNacimiento' | translate"
+            >Fecha Nacimiento</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaNacimiento"
+              data-cy="fechaNacimiento"
+              type="text"
+              class="form-control"
+              name="fechaNacimiento"
+              ngbDatepicker
+              #fechaNacimientoDp="ngbDatepicker"
+              formControlName="fechaNacimiento"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaNacimientoDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (
+            editForm.get('fechaNacimiento')!.invalid && (editForm.get('fechaNacimiento')!.dirty || editForm.get('fechaNacimiento')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('fechaNacimiento')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.callePrincipal"
+            for="field_callePrincipal"
+            [ngbTooltip]="'gatewayApp.paciente.help.callePrincipal' | translate"
+            >Calle Principal</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="callePrincipal"
+            id="field_callePrincipal"
+            data-cy="callePrincipal"
+            formControlName="callePrincipal"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.numeroCasa"
+            for="field_numeroCasa"
+            [ngbTooltip]="'gatewayApp.paciente.help.numeroCasa' | translate"
+            >Numero Casa</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="numeroCasa"
+            id="field_numeroCasa"
+            data-cy="numeroCasa"
+            formControlName="numeroCasa"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.calleSecundaria"
+            for="field_calleSecundaria"
+            [ngbTooltip]="'gatewayApp.paciente.help.calleSecundaria' | translate"
+            >Calle Secundaria</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="calleSecundaria"
+            id="field_calleSecundaria"
+            data-cy="calleSecundaria"
+            formControlName="calleSecundaria"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.barrio"
+            for="field_barrio"
+            [ngbTooltip]="'gatewayApp.paciente.help.barrio' | translate"
+            >Barrio</label
+          >
+          <input type="text" class="form-control" name="barrio" id="field_barrio" data-cy="barrio" formControlName="barrio" />
+          @if (editForm.get('barrio')!.invalid && (editForm.get('barrio')!.dirty || editForm.get('barrio')!.touched)) {
+            <div>
+              @if (editForm.get('barrio')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.referenciaDomicilio"
+            for="field_referenciaDomicilio"
+            [ngbTooltip]="'gatewayApp.paciente.help.referenciaDomicilio' | translate"
+            >Referencia Domicilio</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="referenciaDomicilio"
+            id="field_referenciaDomicilio"
+            data-cy="referenciaDomicilio"
+            formControlName="referenciaDomicilio"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.seguroSaludSecundario"
+            for="field_seguroSaludSecundario"
+            [ngbTooltip]="'gatewayApp.paciente.help.seguroSaludSecundario' | translate"
+            >Seguro Salud Secundario</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="seguroSaludSecundario"
+            id="field_seguroSaludSecundario"
+            data-cy="seguroSaludSecundario"
+            formControlName="seguroSaludSecundario"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.paciente.identificacionRepresentante"
+            for="field_identificacionRepresentante"
+            [ngbTooltip]="'gatewayApp.paciente.help.identificacionRepresentante' | translate"
+            >Identificacion Representante</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="identificacionRepresentante"
+            id="field_identificacionRepresentante"
+            data-cy="identificacionRepresentante"
+            formControlName="identificacionRepresentante"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.discapacidad" for="field_discapacidad">Discapacidad</label>
+          <select
+            class="form-control"
+            id="field_discapacidad"
+            data-cy="discapacidad"
+            name="discapacidad"
+            formControlName="discapacidad"
+            [compareWith]="compareDiscapacidad"
+          >
+            <option [ngValue]="null"></option>
+            @for (discapacidadOption of discapacidadsSharedCollection; track $index) {
+              <option [ngValue]="discapacidadOption">{{ discapacidadOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.persona" for="field_persona">Persona</label>
+          <select
+            class="form-control"
+            id="field_persona"
+            data-cy="persona"
+            name="persona"
+            formControlName="persona"
+            [compareWith]="comparePersona"
+          >
+            @if (!editForm.get('persona')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (personaOption of personasSharedCollection; track $index) {
+              <option [ngValue]="personaOption">{{ personaOption.primerNombre }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['persona'])!.invalid && (editForm.get(['persona'])!.dirty || editForm.get(['persona'])!.touched)) {
+          <div>
+            @if (editForm.get(['persona'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.parroquiaNacimiento" for="field_parroquiaNacimiento"
+            >Parroquia Nacimiento</label
+          >
+          <select
+            class="form-control"
+            id="field_parroquiaNacimiento"
+            data-cy="parroquiaNacimiento"
+            name="parroquiaNacimiento"
+            formControlName="parroquiaNacimiento"
+            [compareWith]="compareParroquiaTerritorio"
+          >
+            <option [ngValue]="null"></option>
+            @for (parroquiaTerritorioOption of parroquiaTerritoriosSharedCollection; track $index) {
+              <option [ngValue]="parroquiaTerritorioOption">{{ parroquiaTerritorioOption.nombre }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.parroquiaResidencia" for="field_parroquiaResidencia"
+            >Parroquia Residencia</label
+          >
+          <select
+            class="form-control"
+            id="field_parroquiaResidencia"
+            data-cy="parroquiaResidencia"
+            name="parroquiaResidencia"
+            formControlName="parroquiaResidencia"
+            [compareWith]="compareParroquiaTerritorio"
+          >
+            @if (!editForm.get('parroquiaResidencia')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (parroquiaTerritorioOption of parroquiaTerritoriosSharedCollection; track $index) {
+              <option [ngValue]="parroquiaTerritorioOption">{{ parroquiaTerritorioOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['parroquiaResidencia'])!.invalid &&
+          (editForm.get(['parroquiaResidencia'])!.dirty || editForm.get(['parroquiaResidencia'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['parroquiaResidencia'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.autoidentificacionEtnica" for="field_autoidentificacionEtnica"
+            >Autoidentificacion Etnica</label
+          >
+          <select
+            class="form-control"
+            id="field_autoidentificacionEtnica"
+            data-cy="autoidentificacionEtnica"
+            name="autoidentificacionEtnica"
+            formControlName="autoidentificacionEtnica"
+            [compareWith]="compareCatalogoItem"
+          >
+            @if (!editForm.get('autoidentificacionEtnica')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['autoidentificacionEtnica'])!.invalid &&
+          (editForm.get(['autoidentificacionEtnica'])!.dirty || editForm.get(['autoidentificacionEtnica'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['autoidentificacionEtnica'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.nacionalidadEtnica" for="field_nacionalidadEtnica"
+            >Nacionalidad Etnica</label
+          >
+          <select
+            class="form-control"
+            id="field_nacionalidadEtnica"
+            data-cy="nacionalidadEtnica"
+            name="nacionalidadEtnica"
+            formControlName="nacionalidadEtnica"
+            [compareWith]="compareCatalogoItem"
+          >
+            <option [ngValue]="null"></option>
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.pueblo" for="field_pueblo">Pueblo</label>
+          <select
+            class="form-control"
+            id="field_pueblo"
+            data-cy="pueblo"
+            name="pueblo"
+            formControlName="pueblo"
+            [compareWith]="compareCatalogoItem"
+          >
+            <option [ngValue]="null"></option>
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.tipoEmpresaTrabajo" for="field_tipoEmpresaTrabajo"
+            >Tipo Empresa Trabajo</label
+          >
+          <select
+            class="form-control"
+            id="field_tipoEmpresaTrabajo"
+            data-cy="tipoEmpresaTrabajo"
+            name="tipoEmpresaTrabajo"
+            formControlName="tipoEmpresaTrabajo"
+            [compareWith]="compareCatalogoItem"
+          >
+            @if (!editForm.get('tipoEmpresaTrabajo')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['tipoEmpresaTrabajo'])!.invalid &&
+          (editForm.get(['tipoEmpresaTrabajo'])!.dirty || editForm.get(['tipoEmpresaTrabajo'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['tipoEmpresaTrabajo'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.profesionOcupacion" for="field_profesionOcupacion"
+            >Profesion Ocupacion</label
+          >
+          <select
+            class="form-control"
+            id="field_profesionOcupacion"
+            data-cy="profesionOcupacion"
+            name="profesionOcupacion"
+            formControlName="profesionOcupacion"
+            [compareWith]="compareCatalogoItem"
+          >
+            @if (!editForm.get('profesionOcupacion')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['profesionOcupacion'])!.invalid &&
+          (editForm.get(['profesionOcupacion'])!.dirty || editForm.get(['profesionOcupacion'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['profesionOcupacion'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.seguroSaludPrincipal" for="field_seguroSaludPrincipal"
+            >Seguro Salud Principal</label
+          >
+          <select
+            class="form-control"
+            id="field_seguroSaludPrincipal"
+            data-cy="seguroSaludPrincipal"
+            name="seguroSaludPrincipal"
+            formControlName="seguroSaludPrincipal"
+            [compareWith]="compareCatalogoItem"
+          >
+            @if (!editForm.get('seguroSaludPrincipal')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['seguroSaludPrincipal'])!.invalid &&
+          (editForm.get(['seguroSaludPrincipal'])!.dirty || editForm.get(['seguroSaludPrincipal'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['seguroSaludPrincipal'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.tipoBono" for="field_tipoBono">Tipo Bono</label>
+          <select
+            class="form-control"
+            id="field_tipoBono"
+            data-cy="tipoBono"
+            name="tipoBono"
+            formControlName="tipoBono"
+            [compareWith]="compareCatalogoItem"
+          >
+            @if (!editForm.get('tipoBono')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['tipoBono'])!.invalid && (editForm.get(['tipoBono'])!.dirty || editForm.get(['tipoBono'])!.touched)) {
+          <div>
+            @if (editForm.get(['tipoBono'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.paciente.procedenciaRepresentante" for="field_procedenciaRepresentante"
+            >Procedencia Representante</label
+          >
+          <select
+            class="form-control"
+            id="field_procedenciaRepresentante"
+            data-cy="procedenciaRepresentante"
+            name="procedenciaRepresentante"
+            formControlName="procedenciaRepresentante"
+            [compareWith]="compareCatalogoItem"
+          >
+            @if (!editForm.get('procedenciaRepresentante')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['procedenciaRepresentante'])!.invalid &&
+          (editForm.get(['procedenciaRepresentante'])!.dirty || editForm.get(['procedenciaRepresentante'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['procedenciaRepresentante'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

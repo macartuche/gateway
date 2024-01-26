@@ -1,0 +1,52 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154024"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The DiagnosticoFormulario053 entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "diagnostico_formulario_053",
+  "fields": [
+    {
+      "documentation": "dep",
+      "fieldName": "dep",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "pre",
+      "fieldName": "pre",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "DiagnosticoFormulario053",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "formulario053Referencia",
+      "relationshipName": "referencia",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "formulario053Contrareferencia",
+      "relationshipName": "contrareferencia",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "itemCie",
+      "relationshipName": "itemCie",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

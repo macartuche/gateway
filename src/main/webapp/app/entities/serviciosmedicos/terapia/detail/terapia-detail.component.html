@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (terapia) {
+      <div>
+        <h2 data-cy="terapiaDetailsHeading"><span jhiTranslate="gatewayApp.serviciosmedicosTerapia.detail.title">Terapia</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ terapia.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTerapia.cantidad"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTerapia.help.cantidad' | translate"
+              >Cantidad</span
+            >
+          </dt>
+          <dd>
+            <span>{{ terapia.cantidad }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTerapia.descripcion"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTerapia.help.descripcion' | translate"
+              >Descripcion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ terapia.descripcion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTerapia.habilitado"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTerapia.help.habilitado' | translate"
+              >Habilitado</span
+            >
+          </dt>
+          <dd>
+            <span>{{ terapia.habilitado }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTerapia.valorUnitarioEstablecimiento"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTerapia.help.valorUnitarioEstablecimiento' | translate"
+              >Valor Unitario Establecimiento</span
+            >
+          </dt>
+          <dd>
+            <span>{{ terapia.valorUnitarioEstablecimiento }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosTerapia.continuidad">Continuidad</span></dt>
+          <dd>
+            @if (terapia.continuidad) {
+              <div>
+                <a [routerLink]="['/continuidad-asistencial', terapia.continuidad.id, 'view']">{{ terapia.continuidad.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosTerapia.itemLiquidacion">Item Liquidacion</span></dt>
+          <dd>
+            @if (terapia.itemLiquidacion) {
+              <div>
+                <a [routerLink]="['/item-liquidacion', terapia.itemLiquidacion.id, 'view']">{{ terapia.itemLiquidacion.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosTerapia.tarifario">Tarifario</span></dt>
+          <dd>
+            @if (terapia.tarifario) {
+              <div>
+                <a [routerLink]="['/tarifario', terapia.tarifario.id, 'view']">{{ terapia.tarifario.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/terapia', terapia.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

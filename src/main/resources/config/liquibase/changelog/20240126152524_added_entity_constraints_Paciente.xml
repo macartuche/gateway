@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Paciente.
+    -->
+    <changeSet id="20240126152524-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="discapacidad_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__discapacidad_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="discapacidad"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="persona_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__persona_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="persona"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="parroquia_nacimiento_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__parroquia_nacimiento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parroquia_territorio"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="parroquia_residencia_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__parroquia_residencia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parroquia_territorio"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="autoidentificacion_etnica_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__autoidentificacion_etnica_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="nacionalidad_etnica_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__nacionalidad_etnica_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="pueblo_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__pueblo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="tipo_empresa_trabajo_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__tipo_empresa_trabajo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="profesion_ocupacion_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__profesion_ocupacion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="seguro_salud_principal_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__seguro_salud_principal_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="tipo_bono_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__tipo_bono_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="procedencia_representante_id"
+                                 baseTableName="paciente"
+                                 constraintName="fk_paciente__procedencia_representante_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+    </changeSet>
+</databaseChangeLog>

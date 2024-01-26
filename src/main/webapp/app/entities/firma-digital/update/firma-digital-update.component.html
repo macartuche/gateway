@@ -1,0 +1,145 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-firma-digital-heading"
+        data-cy="FirmaDigitalCreateUpdateHeading"
+        jhiTranslate="gatewayApp.firmaDigital.home.createOrEditLabel"
+      >
+        Create or edit a Firma Digital
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.firmaDigital.fechaDesde"
+            for="field_fechaDesde"
+            [ngbTooltip]="'gatewayApp.firmaDigital.help.fechaDesde' | translate"
+            >Fecha Desde</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaDesde"
+              data-cy="fechaDesde"
+              type="text"
+              class="form-control"
+              name="fechaDesde"
+              ngbDatepicker
+              #fechaDesdeDp="ngbDatepicker"
+              formControlName="fechaDesde"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaDesdeDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (editForm.get('fechaDesde')!.invalid && (editForm.get('fechaDesde')!.dirty || editForm.get('fechaDesde')!.touched)) {
+            <div>
+              @if (editForm.get('fechaDesde')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.firmaDigital.fechaHasta"
+            for="field_fechaHasta"
+            [ngbTooltip]="'gatewayApp.firmaDigital.help.fechaHasta' | translate"
+            >Fecha Hasta</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaHasta"
+              data-cy="fechaHasta"
+              type="text"
+              class="form-control"
+              name="fechaHasta"
+              ngbDatepicker
+              #fechaHastaDp="ngbDatepicker"
+              formControlName="fechaHasta"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaHastaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (editForm.get('fechaHasta')!.invalid && (editForm.get('fechaHasta')!.dirty || editForm.get('fechaHasta')!.touched)) {
+            <div>
+              @if (editForm.get('fechaHasta')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.firmaDigital.path"
+            for="field_path"
+            [ngbTooltip]="'gatewayApp.firmaDigital.help.path' | translate"
+            >Path</label
+          >
+          <input type="text" class="form-control" name="path" id="field_path" data-cy="path" formControlName="path" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.firmaDigital.tipo" for="field_tipo">Tipo</label>
+          <select
+            class="form-control"
+            id="field_tipo"
+            data-cy="tipo"
+            name="tipo"
+            formControlName="tipo"
+            [compareWith]="compareCatalogoItem"
+          >
+            <option [ngValue]="null"></option>
+            @for (catalogoItemOption of catalogoItemsSharedCollection; track $index) {
+              <option [ngValue]="catalogoItemOption">{{ catalogoItemOption.nombre }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.firmaDigital.persona" for="field_persona">Persona</label>
+          <select
+            class="form-control"
+            id="field_persona"
+            data-cy="persona"
+            name="persona"
+            formControlName="persona"
+            [compareWith]="comparePersona"
+          >
+            <option [ngValue]="null"></option>
+            @for (personaOption of personasSharedCollection; track $index) {
+              <option [ngValue]="personaOption">{{ personaOption.identificacion }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

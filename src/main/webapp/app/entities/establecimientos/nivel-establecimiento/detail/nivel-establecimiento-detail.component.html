@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (nivelEstablecimiento) {
+      <div>
+        <h2 data-cy="nivelEstablecimientoDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosNivelEstablecimiento.detail.title">Nivel Establecimiento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ nivelEstablecimiento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosNivelEstablecimiento.codigo"
+              [ngbTooltip]="'gatewayApp.establecimientosNivelEstablecimiento.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ nivelEstablecimiento.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosNivelEstablecimiento.nombre"
+              [ngbTooltip]="'gatewayApp.establecimientosNivelEstablecimiento.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ nivelEstablecimiento.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosNivelEstablecimiento.descripcion"
+              [ngbTooltip]="'gatewayApp.establecimientosNivelEstablecimiento.help.descripcion' | translate"
+              >Descripcion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ nivelEstablecimiento.descripcion }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/nivel-establecimiento', nivelEstablecimiento.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

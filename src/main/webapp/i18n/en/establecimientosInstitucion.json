@@ -1,0 +1,41 @@
+{
+  "gatewayApp": {
+    "establecimientosInstitucion": {
+      "home": {
+        "title": "Institucions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Institucion",
+        "createOrEditLabel": "Create or edit a Institucion",
+        "notFound": "No Institucions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Institucion {{ id }}?"
+      },
+      "detail": {
+        "title": "Institucion"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "permiteDerivacion": "Permite Derivacion",
+      "permiteReferencia": "Permite Referencia",
+      "permiteContrareferencia": "Permite Contrareferencia",
+      "estadoId": "Estado Id",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre",
+        "permiteDerivacion": "permite Derivacion?",
+        "permiteReferencia": "permite Referencia?",
+        "permiteContrareferencia": "permite Contrareferencia?",
+        "estadoId": "estadoId"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosInstitucion": {
+      "created": "A new Institucion is created with identifier {{ param }}",
+      "updated": "A Institucion is updated with identifier {{ param }}",
+      "deleted": "A Institucion is deleted with identifier {{ param }}"
+    }
+  }
+}

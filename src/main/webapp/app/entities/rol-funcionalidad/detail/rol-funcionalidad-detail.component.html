@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (rolFuncionalidad) {
+      <div>
+        <h2 data-cy="rolFuncionalidadDetailsHeading">
+          <span jhiTranslate="gatewayApp.rolFuncionalidad.detail.title">Rol Funcionalidad</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ rolFuncionalidad.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.rolFuncionalidad.rol" [ngbTooltip]="'gatewayApp.rolFuncionalidad.help.rol' | translate"
+              >Rol</span
+            >
+          </dt>
+          <dd>
+            <span>{{ rolFuncionalidad.rol }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.rolFuncionalidad.activo" [ngbTooltip]="'gatewayApp.rolFuncionalidad.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ rolFuncionalidad.activo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.rolFuncionalidad.prioridad"
+              [ngbTooltip]="'gatewayApp.rolFuncionalidad.help.prioridad' | translate"
+              >Prioridad</span
+            >
+          </dt>
+          <dd>
+            <span>{{ rolFuncionalidad.prioridad }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.rolFuncionalidad.funcionalidad">Funcionalidad</span></dt>
+          <dd>
+            @if (rolFuncionalidad.funcionalidad) {
+              <div>
+                <a [routerLink]="['/funcionalidad', rolFuncionalidad.funcionalidad.id, 'view']">{{
+                  rolFuncionalidad.funcionalidad.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/rol-funcionalidad', rolFuncionalidad.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

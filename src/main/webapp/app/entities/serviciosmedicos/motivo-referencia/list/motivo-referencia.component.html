@@ -1,0 +1,136 @@
+<div>
+  <h2 id="page-heading" data-cy="MotivoReferenciaHeading">
+    <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.home.title">Motivo Referencias</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-motivo-referencia"
+        [routerLink]="['/motivo-referencia/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.home.createLabel">Create a new Motivo Referencia</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (motivoReferencias?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.home.notFound">No Motivo Referencias found</span>
+    </div>
+  }
+
+  @if (motivoReferencias && motivoReferencias.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="detalle">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.detalle">Detalle</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoId">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.tipoId">Tipo Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="referencia.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.referencia">Referencia</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (motivoReferencia of motivoReferencias; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/motivo-referencia', motivoReferencia.id, 'view']">{{ motivoReferencia.id }}</a>
+              </td>
+              <td>{{ motivoReferencia.detalle }}</td>
+              <td>{{ motivoReferencia.tipoId }}</td>
+              <td>
+                @if (motivoReferencia.referencia) {
+                  <div>
+                    <a [routerLink]="['/formulario-053-referencia', motivoReferencia.referencia.id, 'view']">{{
+                      motivoReferencia.referencia.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/motivo-referencia', motivoReferencia.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/motivo-referencia', motivoReferencia.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(motivoReferencia)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (motivoReferencias && motivoReferencias.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

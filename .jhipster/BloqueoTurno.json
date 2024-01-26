@@ -1,0 +1,41 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153324"
+  },
+  "applications": ["gateway", "citasmedicas"],
+  "clientRootFolder": "citasmedicas",
+  "databaseType": "sql",
+  "documentation": "The BloqueoTurno entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "bloqueo_turno",
+  "fields": [
+    {
+      "documentation": "fecha",
+      "fieldName": "fecha",
+      "fieldType": "LocalDate"
+    },
+    {
+      "documentation": "explicacion de bloqueo",
+      "fieldName": "explicacion",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "bloqueo activo?",
+      "fieldName": "activo",
+      "fieldType": "Boolean"
+    }
+  ],
+  "microserviceName": "citasmedicas",
+  "name": "BloqueoTurno",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "turno",
+      "relationshipName": "turno",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

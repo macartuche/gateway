@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "establecimientosDistrito": {
+      "home": {
+        "title": "Distritos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Distrito",
+        "createOrEditLabel": "Crear o editar Distrito",
+        "notFound": "Ningún Distritos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Distrito {{ id }}?"
+      },
+      "detail": {
+        "title": "Distrito"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "provincia": "Provincia",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosDistrito": {
+      "created": "Un nuevo Distrito ha sido creado con el identificador {{ param }}",
+      "updated": "Un Distrito ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Distrito ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

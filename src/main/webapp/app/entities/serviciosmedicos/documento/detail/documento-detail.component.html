@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (documento) {
+      <div>
+        <h2 data-cy="documentoDetailsHeading"><span jhiTranslate="gatewayApp.serviciosmedicosDocumento.detail.title">Documento</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ documento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosDocumento.nombre"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosDocumento.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ documento.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosDocumento.requerido"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosDocumento.help.requerido' | translate"
+              >Requerido</span
+            >
+          </dt>
+          <dd>
+            <span>{{ documento.requerido }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosDocumento.codigo"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosDocumento.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ documento.codigo }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosDocumento.tipoTramite">Tipo Tramite</span></dt>
+          <dd>
+            @if (documento.tipoTramite) {
+              <div>
+                <a [routerLink]="['/tipo-tramite', documento.tipoTramite.id, 'view']">{{ documento.tipoTramite.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/documento', documento.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

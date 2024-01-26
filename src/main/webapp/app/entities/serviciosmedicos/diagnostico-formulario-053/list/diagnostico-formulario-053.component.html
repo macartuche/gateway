@@ -1,0 +1,173 @@
+<div>
+  <h2 id="page-heading" data-cy="DiagnosticoFormulario053Heading">
+    <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.home.title">Diagnostico Formulario 053 S</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-diagnostico-formulario-053"
+        [routerLink]="['/diagnostico-formulario-053/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.home.createLabel"
+          >Create a new Diagnostico Formulario 053</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (diagnosticoFormulario053s?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.home.notFound">No Diagnostico Formulario 053 S found</span>
+    </div>
+  }
+
+  @if (diagnosticoFormulario053s && diagnosticoFormulario053s.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dep">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.dep">Dep</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.pre">Pre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="referencia.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.referencia">Referencia</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contrareferencia.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.contrareferencia">Contrareferencia</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="itemCie.nombre">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.itemCie">Item Cie</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (diagnosticoFormulario053 of diagnosticoFormulario053s; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/diagnostico-formulario-053', diagnosticoFormulario053.id, 'view']">{{ diagnosticoFormulario053.id }}</a>
+              </td>
+              <td>{{ diagnosticoFormulario053.dep }}</td>
+              <td>{{ diagnosticoFormulario053.pre }}</td>
+              <td>
+                @if (diagnosticoFormulario053.referencia) {
+                  <div>
+                    <a [routerLink]="['/formulario-053-referencia', diagnosticoFormulario053.referencia.id, 'view']">{{
+                      diagnosticoFormulario053.referencia.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (diagnosticoFormulario053.contrareferencia) {
+                  <div>
+                    <a [routerLink]="['/formulario-053-contrareferencia', diagnosticoFormulario053.contrareferencia.id, 'view']">{{
+                      diagnosticoFormulario053.contrareferencia.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (diagnosticoFormulario053.itemCie) {
+                  <div>
+                    <a [routerLink]="['/item-cie', diagnosticoFormulario053.itemCie.id, 'view']">{{
+                      diagnosticoFormulario053.itemCie.nombre
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/diagnostico-formulario-053', diagnosticoFormulario053.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/diagnostico-formulario-053', diagnosticoFormulario053.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button
+                    type="submit"
+                    (click)="delete(diagnosticoFormulario053)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (diagnosticoFormulario053s && diagnosticoFormulario053s.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,145 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-diagnostico-formulario-053-heading"
+        data-cy="DiagnosticoFormulario053CreateUpdateHeading"
+        jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.home.createOrEditLabel"
+      >
+        Create or edit a Diagnostico Formulario 053
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.dep"
+            for="field_dep"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosDiagnosticoFormulario053.help.dep' | translate"
+            >Dep</label
+          >
+          <input type="checkbox" class="form-check" name="dep" id="field_dep" data-cy="dep" formControlName="dep" />
+          @if (editForm.get('dep')!.invalid && (editForm.get('dep')!.dirty || editForm.get('dep')!.touched)) {
+            <div>
+              @if (editForm.get('dep')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.pre"
+            for="field_pre"
+            [ngbTooltip]="'gatewayApp.serviciosmedicosDiagnosticoFormulario053.help.pre' | translate"
+            >Pre</label
+          >
+          <input type="checkbox" class="form-check" name="pre" id="field_pre" data-cy="pre" formControlName="pre" />
+          @if (editForm.get('pre')!.invalid && (editForm.get('pre')!.dirty || editForm.get('pre')!.touched)) {
+            <div>
+              @if (editForm.get('pre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.referencia" for="field_referencia"
+            >Referencia</label
+          >
+          <select
+            class="form-control"
+            id="field_referencia"
+            data-cy="referencia"
+            name="referencia"
+            formControlName="referencia"
+            [compareWith]="compareFormulario053Referencia"
+          >
+            <option [ngValue]="null"></option>
+            @for (formulario053ReferenciaOption of formulario053ReferenciasSharedCollection; track $index) {
+              <option [ngValue]="formulario053ReferenciaOption">{{ formulario053ReferenciaOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.contrareferencia"
+            for="field_contrareferencia"
+            >Contrareferencia</label
+          >
+          <select
+            class="form-control"
+            id="field_contrareferencia"
+            data-cy="contrareferencia"
+            name="contrareferencia"
+            formControlName="contrareferencia"
+            [compareWith]="compareFormulario053Contrareferencia"
+          >
+            <option [ngValue]="null"></option>
+            @for (formulario053ContrareferenciaOption of formulario053ContrareferenciasSharedCollection; track $index) {
+              <option [ngValue]="formulario053ContrareferenciaOption">{{ formulario053ContrareferenciaOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.serviciosmedicosDiagnosticoFormulario053.itemCie" for="field_itemCie"
+            >Item Cie</label
+          >
+          <select
+            class="form-control"
+            id="field_itemCie"
+            data-cy="itemCie"
+            name="itemCie"
+            formControlName="itemCie"
+            [compareWith]="compareItemCie"
+          >
+            @if (!editForm.get('itemCie')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (itemCieOption of itemCiesSharedCollection; track $index) {
+              <option [ngValue]="itemCieOption">{{ itemCieOption.nombre }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['itemCie'])!.invalid && (editForm.get(['itemCie'])!.dirty || editForm.get(['itemCie'])!.touched)) {
+          <div>
+            @if (editForm.get(['itemCie'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

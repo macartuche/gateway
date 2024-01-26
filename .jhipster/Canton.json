@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151424"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Canton entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "canton",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Canton",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Distrito al que pertenece el canton",
+      "otherEntityField": "nombre",
+      "otherEntityName": "distrito",
+      "relationshipName": "distrito",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

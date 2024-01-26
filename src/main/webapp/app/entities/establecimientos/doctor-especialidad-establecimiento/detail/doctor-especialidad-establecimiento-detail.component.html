@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (doctorEspecialidadEstablecimiento) {
+      <div>
+        <h2 data-cy="doctorEspecialidadEstablecimientoDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.detail.title"
+            >Doctor Especialidad Establecimiento</span
+          >
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ doctorEspecialidadEstablecimiento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.activo"
+              [ngbTooltip]="'gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ doctorEspecialidadEstablecimiento.activo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.doctorId"
+              [ngbTooltip]="'gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.help.doctorId' | translate"
+              >Doctor Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ doctorEspecialidadEstablecimiento.doctorId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.especialidadId"
+              [ngbTooltip]="'gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.help.especialidadId' | translate"
+              >Especialidad Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ doctorEspecialidadEstablecimiento.especialidadId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosDoctorEspecialidadEstablecimiento.establecimiento">Establecimiento</span></dt>
+          <dd>
+            @if (doctorEspecialidadEstablecimiento.establecimiento) {
+              <div>
+                <a [routerLink]="['/establecimiento', doctorEspecialidadEstablecimiento.establecimiento.id, 'view']">{{
+                  doctorEspecialidadEstablecimiento.establecimiento.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/doctor-especialidad-establecimiento', doctorEspecialidadEstablecimiento.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

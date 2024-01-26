@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (itemCie) {
+      <div>
+        <h2 data-cy="itemCieDetailsHeading"><span jhiTranslate="gatewayApp.serviciosmedicosItemCie.detail.title">Item Cie</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ itemCie.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosItemCie.nombre"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosItemCie.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ itemCie.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosItemCie.codigo"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosItemCie.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ itemCie.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosItemCie.activo"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosItemCie.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ itemCie.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosItemCie.padre">Padre</span></dt>
+          <dd>
+            @if (itemCie.padre) {
+              <div>
+                <a [routerLink]="['/item-cie', itemCie.padre.id, 'view']">{{ itemCie.padre.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosItemCie.cie">Cie</span></dt>
+          <dd>
+            @if (itemCie.cie) {
+              <div>
+                <a [routerLink]="['/cie', itemCie.cie.id, 'view']">{{ itemCie.cie.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/item-cie', itemCie.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

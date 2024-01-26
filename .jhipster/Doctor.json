@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20240126152024"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The Doctor entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "doctor",
+  "fields": [
+    {
+      "documentation": "codigo",
+      "fieldName": "codigo",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "activo",
+      "fieldName": "activo",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Doctor",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "primerNombre",
+      "otherEntityName": "persona",
+      "relationshipName": "persona",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

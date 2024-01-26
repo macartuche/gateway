@@ -1,0 +1,38 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosItemCie": {
+      "home": {
+        "title": "Item Cies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Item Cie",
+        "createOrEditLabel": "Create or edit a Item Cie",
+        "notFound": "No Item Cies found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Item Cie {{ id }}?"
+      },
+      "detail": {
+        "title": "Item Cie"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "codigo": "Codigo",
+      "activo": "Activo",
+      "hijos": "Hijos",
+      "padre": "Padre",
+      "cie": "Cie",
+      "help": {
+        "nombre": "nombre",
+        "codigo": "codigo",
+        "activo": "activo"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosItemCie": {
+      "created": "A new Item Cie is created with identifier {{ param }}",
+      "updated": "A Item Cie is updated with identifier {{ param }}",
+      "deleted": "A Item Cie is deleted with identifier {{ param }}"
+    }
+  }
+}

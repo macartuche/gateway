@@ -1,0 +1,158 @@
+<div>
+  <h2 id="page-heading" data-cy="DetalleCronogramaHeading">
+    <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.home.title">Detalle Cronogramas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-detalle-cronograma"
+        [routerLink]="['/detalle-cronograma/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.home.createLabel">Create a new Detalle Cronograma</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (detalleCronogramas?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.home.notFound">No Detalle Cronogramas found</span>
+    </div>
+  }
+
+  @if (detalleCronogramas && detalleCronogramas.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fecha">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.fecha">Fecha</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cantidad">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.cantidad">Cantidad</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activo">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.activo">Activo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaDesactivacion">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.fechaDesactivacion">Fecha Desactivacion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoId">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.tipoId">Tipo Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cronograma.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.cronograma">Cronograma</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (detalleCronograma of detalleCronogramas; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/detalle-cronograma', detalleCronograma.id, 'view']">{{ detalleCronograma.id }}</a>
+              </td>
+              <td>{{ detalleCronograma.fecha | formatMediumDate }}</td>
+              <td>{{ detalleCronograma.cantidad }}</td>
+              <td>{{ detalleCronograma.activo }}</td>
+              <td>{{ detalleCronograma.fechaDesactivacion | formatMediumDate }}</td>
+              <td>{{ detalleCronograma.tipoId }}</td>
+              <td>
+                @if (detalleCronograma.cronograma) {
+                  <div>
+                    <a [routerLink]="['/cronograma', detalleCronograma.cronograma.id, 'view']">{{ detalleCronograma.cronograma.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/detalle-cronograma', detalleCronograma.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/detalle-cronograma', detalleCronograma.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(detalleCronograma)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (detalleCronogramas && detalleCronogramas.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

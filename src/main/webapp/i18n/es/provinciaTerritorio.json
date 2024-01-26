@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "provinciaTerritorio": {
+      "home": {
+        "title": "Provincia Territorios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Provincia Territorio",
+        "createOrEditLabel": "Crear o editar Provincia Territorio",
+        "notFound": "Ningún Provincia Territorios encontrado"
+      },
+      "created": "Un nuevo Provincia Territorio ha sido creado con el identificador {{ param }}",
+      "updated": "Un Provincia Territorio ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Provincia Territorio ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Provincia Territorio {{ id }}?"
+      },
+      "detail": {
+        "title": "Provincia Territorio"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "pais": "Pais",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre",
+        "pais": "pais"
+      }
+    }
+  }
+}

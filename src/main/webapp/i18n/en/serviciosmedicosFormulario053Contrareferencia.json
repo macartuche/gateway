@@ -1,0 +1,40 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosFormulario053Contrareferencia": {
+      "home": {
+        "title": "Formulario 053 Contrareferencias",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Formulario 053 Contrareferencia",
+        "createOrEditLabel": "Create or edit a Formulario 053 Contrareferencia",
+        "notFound": "No Formulario 053 Contrareferencias found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Formulario 053 Contrareferencia {{ id }}?"
+      },
+      "detail": {
+        "title": "Formulario 053 Contrareferencia"
+      },
+      "id": "ID",
+      "hallazgosRelevantes": "Hallazgos Relevantes",
+      "resumen": "Resumen",
+      "tratamientoProcedimientosRealizados": "Tratamiento Procedimientos Realizados",
+      "tratamientoRecomendado": "Tratamiento Recomendado",
+      "referenciaJustificada": "Referencia Justificada",
+      "formulario": "Formulario",
+      "help": {
+        "hallazgosRelevantes": "hallazgosRelevantes",
+        "resumen": "resumen",
+        "tratamientoProcedimientosRealizados": "tratamientoProcedimientosRealizados",
+        "tratamientoRecomendado": "tratamientoRecomendado",
+        "referenciaJustificada": "referenciaJustificada"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosFormulario053Contrareferencia": {
+      "created": "A new Formulario 053 Contrareferencia is created with identifier {{ param }}",
+      "updated": "A Formulario 053 Contrareferencia is updated with identifier {{ param }}",
+      "deleted": "A Formulario 053 Contrareferencia is deleted with identifier {{ param }}"
+    }
+  }
+}

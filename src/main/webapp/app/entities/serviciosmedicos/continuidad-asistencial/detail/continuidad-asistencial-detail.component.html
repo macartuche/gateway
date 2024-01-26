@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (continuidadAsistencial) {
+      <div>
+        <h2 data-cy="continuidadAsistencialDetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosContinuidadAsistencial.detail.title">Continuidad Asistencial</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ continuidadAsistencial.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosContinuidadAsistencial.observacion"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosContinuidadAsistencial.help.observacion' | translate"
+              >Observacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ continuidadAsistencial.observacion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosContinuidadAsistencial.servicioHospitalario"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosContinuidadAsistencial.help.servicioHospitalario' | translate"
+              >Servicio Hospitalario</span
+            >
+          </dt>
+          <dd>
+            <span>{{ continuidadAsistencial.servicioHospitalario }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosContinuidadAsistencial.itemCie">Item Cie</span></dt>
+          <dd>
+            @if (continuidadAsistencial.itemCie) {
+              <div>
+                <a [routerLink]="['/item-cie', continuidadAsistencial.itemCie.id, 'view']">{{ continuidadAsistencial.itemCie.nombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/continuidad-asistencial', continuidadAsistencial.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,70 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154224"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Tramite entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "tramite",
+  "fields": [
+    {
+      "documentation": "codigoValidacion",
+      "fieldName": "codigoValidacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "numero",
+      "fieldName": "numero",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "estadoId",
+      "fieldName": "estadoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "pacienteId",
+      "fieldName": "pacienteId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "establecimientoOrigenId",
+      "fieldName": "establecimientoOrigenId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "establecimientoDestinoId",
+      "fieldName": "establecimientoDestinoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Tramite",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "formulario053",
+      "relationshipName": "formulario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "tipoTramite",
+      "relationshipName": "tipoTramite",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

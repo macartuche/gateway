@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153824"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Formulario053Referencia entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "formulario_053_referencia",
+  "fields": [
+    {
+      "documentation": "cuadroClinico",
+      "fieldName": "cuadroClinico",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "hallazgosRelevantes",
+      "fieldName": "hallazgosRelevantes",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Formulario053Referencia",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "formulario053",
+      "relationshipName": "formulario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

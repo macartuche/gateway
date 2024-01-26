@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (tramite) {
+      <div>
+        <h2 data-cy="tramiteDetailsHeading"><span jhiTranslate="gatewayApp.serviciosmedicosTramite.detail.title">Tramite</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ tramite.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTramite.codigoValidacion"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTramite.help.codigoValidacion' | translate"
+              >Codigo Validacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tramite.codigoValidacion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTramite.numero"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTramite.help.numero' | translate"
+              >Numero</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tramite.numero }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTramite.estadoId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTramite.help.estadoId' | translate"
+              >Estado Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tramite.estadoId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTramite.pacienteId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTramite.help.pacienteId' | translate"
+              >Paciente Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tramite.pacienteId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTramite.establecimientoOrigenId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTramite.help.establecimientoOrigenId' | translate"
+              >Establecimiento Origen Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tramite.establecimientoOrigenId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTramite.establecimientoDestinoId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTramite.help.establecimientoDestinoId' | translate"
+              >Establecimiento Destino Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tramite.establecimientoDestinoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosTramite.formulario">Formulario</span></dt>
+          <dd>
+            @if (tramite.formulario) {
+              <div>
+                <a [routerLink]="['/formulario-053', tramite.formulario.id, 'view']">{{ tramite.formulario.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosTramite.tipoTramite">Tipo Tramite</span></dt>
+          <dd>
+            @if (tramite.tipoTramite) {
+              <div>
+                <a [routerLink]="['/tipo-tramite', tramite.tipoTramite.id, 'view']">{{ tramite.tipoTramite.nombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/tramite', tramite.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

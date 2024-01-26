@@ -1,0 +1,253 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-cita-medica-heading"
+        data-cy="CitaMedicaCreateUpdateHeading"
+        jhiTranslate="gatewayApp.citasmedicasCitaMedica.home.createOrEditLabel"
+      >
+        Create or edit a Cita Medica
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.fechaInicioAtencion"
+            for="field_fechaInicioAtencion"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.fechaInicioAtencion' | translate"
+            >Fecha Inicio Atencion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaInicioAtencion"
+              data-cy="fechaInicioAtencion"
+              type="text"
+              class="form-control"
+              name="fechaInicioAtencion"
+              ngbDatepicker
+              #fechaInicioAtencionDp="ngbDatepicker"
+              formControlName="fechaInicioAtencion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaInicioAtencionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.fechaFinAtencion"
+            for="field_fechaFinAtencion"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.fechaFinAtencion' | translate"
+            >Fecha Fin Atencion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaFinAtencion"
+              data-cy="fechaFinAtencion"
+              type="text"
+              class="form-control"
+              name="fechaFinAtencion"
+              ngbDatepicker
+              #fechaFinAtencionDp="ngbDatepicker"
+              formControlName="fechaFinAtencion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaFinAtencionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.horaInicioAtencion"
+            for="field_horaInicioAtencion"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.horaInicioAtencion' | translate"
+            >Hora Inicio Atencion</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horaInicioAtencion"
+              data-cy="horaInicioAtencion"
+              type="datetime-local"
+              class="form-control"
+              name="horaInicioAtencion"
+              formControlName="horaInicioAtencion"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.horaFinAtencion"
+            for="field_horaFinAtencion"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.horaFinAtencion' | translate"
+            >Hora Fin Atencion</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horaFinAtencion"
+              data-cy="horaFinAtencion"
+              type="datetime-local"
+              class="form-control"
+              name="horaFinAtencion"
+              formControlName="horaFinAtencion"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.activa"
+            for="field_activa"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.activa' | translate"
+            >Activa</label
+          >
+          <input type="checkbox" class="form-check" name="activa" id="field_activa" data-cy="activa" formControlName="activa" />
+          @if (editForm.get('activa')!.invalid && (editForm.get('activa')!.dirty || editForm.get('activa')!.touched)) {
+            <div>
+              @if (editForm.get('activa')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.observacion"
+            for="field_observacion"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.observacion' | translate"
+            >Observacion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="observacion"
+            id="field_observacion"
+            data-cy="observacion"
+            formControlName="observacion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.estadoId"
+            for="field_estadoId"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.estadoId' | translate"
+            >Estado Id</label
+          >
+          <input type="number" class="form-control" name="estadoId" id="field_estadoId" data-cy="estadoId" formControlName="estadoId" />
+          @if (editForm.get('estadoId')!.invalid && (editForm.get('estadoId')!.dirty || editForm.get('estadoId')!.touched)) {
+            <div>
+              @if (editForm.get('estadoId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('estadoId')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.pacienteId"
+            for="field_pacienteId"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.pacienteId' | translate"
+            >Paciente Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="pacienteId"
+            id="field_pacienteId"
+            data-cy="pacienteId"
+            formControlName="pacienteId"
+          />
+          @if (editForm.get('pacienteId')!.invalid && (editForm.get('pacienteId')!.dirty || editForm.get('pacienteId')!.touched)) {
+            <div>
+              @if (editForm.get('pacienteId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('pacienteId')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasCitaMedica.tramiteId"
+            for="field_tramiteId"
+            [ngbTooltip]="'gatewayApp.citasmedicasCitaMedica.help.tramiteId' | translate"
+            >Tramite Id</label
+          >
+          <input type="number" class="form-control" name="tramiteId" id="field_tramiteId" data-cy="tramiteId" formControlName="tramiteId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.citasmedicasCitaMedica.turno" for="field_turno">Turno</label>
+          <select class="form-control" id="field_turno" data-cy="turno" name="turno" formControlName="turno" [compareWith]="compareTurno">
+            @if (!editForm.get('turno')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (turnoOption of turnosSharedCollection; track $index) {
+              <option [ngValue]="turnoOption">{{ turnoOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['turno'])!.invalid && (editForm.get(['turno'])!.dirty || editForm.get(['turno'])!.touched)) {
+          <div>
+            @if (editForm.get(['turno'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

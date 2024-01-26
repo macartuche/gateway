@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (distrito) {
+      <div>
+        <h2 data-cy="distritoDetailsHeading"><span jhiTranslate="gatewayApp.establecimientosDistrito.detail.title">Distrito</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ distrito.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosDistrito.codigo"
+              [ngbTooltip]="'gatewayApp.establecimientosDistrito.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ distrito.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosDistrito.nombre"
+              [ngbTooltip]="'gatewayApp.establecimientosDistrito.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ distrito.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosDistrito.provincia">Provincia</span></dt>
+          <dd>
+            @if (distrito.provincia) {
+              <div>
+                <a [routerLink]="['/provincia', distrito.provincia.id, 'view']">{{ distrito.provincia.nombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/distrito', distrito.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

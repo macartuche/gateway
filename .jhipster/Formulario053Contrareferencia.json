@@ -1,0 +1,52 @@
+{
+  "annotations": {
+    "changelogDate": "20240126154124"
+  },
+  "applications": ["gateway", "serviciosmedicos"],
+  "clientRootFolder": "serviciosmedicos",
+  "databaseType": "sql",
+  "documentation": "The Formulario053Contrareferencia entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "formulario_053_contrareferencia",
+  "fields": [
+    {
+      "documentation": "hallazgosRelevantes",
+      "fieldName": "hallazgosRelevantes",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "resumen",
+      "fieldName": "resumen",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "tratamientoProcedimientosRealizados",
+      "fieldName": "tratamientoProcedimientosRealizados",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "tratamientoRecomendado",
+      "fieldName": "tratamientoRecomendado",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "referenciaJustificada",
+      "fieldName": "referenciaJustificada",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "serviciosmedicos",
+  "name": "Formulario053Contrareferencia",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "formulario053",
+      "relationshipName": "formulario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

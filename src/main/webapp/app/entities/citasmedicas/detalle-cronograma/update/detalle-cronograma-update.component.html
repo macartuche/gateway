@@ -1,0 +1,160 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-detalle-cronograma-heading"
+        data-cy="DetalleCronogramaCreateUpdateHeading"
+        jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.home.createOrEditLabel"
+      >
+        Create or edit a Detalle Cronograma
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.fecha"
+            for="field_fecha"
+            [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.fecha' | translate"
+            >Fecha</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fecha"
+              data-cy="fecha"
+              type="text"
+              class="form-control"
+              name="fecha"
+              ngbDatepicker
+              #fechaDp="ngbDatepicker"
+              formControlName="fecha"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (editForm.get('fecha')!.invalid && (editForm.get('fecha')!.dirty || editForm.get('fecha')!.touched)) {
+            <div>
+              @if (editForm.get('fecha')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.cantidad"
+            for="field_cantidad"
+            [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.cantidad' | translate"
+            >Cantidad</label
+          >
+          <input type="number" class="form-control" name="cantidad" id="field_cantidad" data-cy="cantidad" formControlName="cantidad" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.activo"
+            for="field_activo"
+            [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.activo' | translate"
+            >Activo</label
+          >
+          <input type="checkbox" class="form-check" name="activo" id="field_activo" data-cy="activo" formControlName="activo" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.fechaDesactivacion"
+            for="field_fechaDesactivacion"
+            [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.fechaDesactivacion' | translate"
+            >Fecha Desactivacion</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaDesactivacion"
+              data-cy="fechaDesactivacion"
+              type="text"
+              class="form-control"
+              name="fechaDesactivacion"
+              ngbDatepicker
+              #fechaDesactivacionDp="ngbDatepicker"
+              formControlName="fechaDesactivacion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaDesactivacionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.tipoId"
+            for="field_tipoId"
+            [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.tipoId' | translate"
+            >Tipo Id</label
+          >
+          <input type="number" class="form-control" name="tipoId" id="field_tipoId" data-cy="tipoId" formControlName="tipoId" />
+          @if (editForm.get('tipoId')!.invalid && (editForm.get('tipoId')!.dirty || editForm.get('tipoId')!.touched)) {
+            <div>
+              @if (editForm.get('tipoId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('tipoId')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.cronograma" for="field_cronograma"
+            >Cronograma</label
+          >
+          <select
+            class="form-control"
+            id="field_cronograma"
+            data-cy="cronograma"
+            name="cronograma"
+            formControlName="cronograma"
+            [compareWith]="compareCronograma"
+          >
+            <option [ngValue]="null"></option>
+            @for (cronogramaOption of cronogramasSharedCollection; track $index) {
+              <option [ngValue]="cronogramaOption">{{ cronogramaOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

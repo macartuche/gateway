@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "establecimientosTipoEstablecimiento": {
+      "home": {
+        "title": "Tipo Establecimientos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tipo Establecimiento",
+        "createOrEditLabel": "Crear o editar Tipo Establecimiento",
+        "notFound": "Ningún Tipo Establecimientos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Establecimiento"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "nivel": "Nivel",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre",
+        "descripcion": "descripcion"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosTipoEstablecimiento": {
+      "created": "Un nuevo Tipo Establecimiento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Establecimiento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Establecimiento ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

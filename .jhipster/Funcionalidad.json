@@ -1,0 +1,66 @@
+{
+  "annotations": {
+    "changelogDate": "20240126150724"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The Funcionalidad entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "funcionalidad",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "descripcion",
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "url",
+      "fieldName": "url",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "80"
+    },
+    {
+      "documentation": "activo",
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "icono menu",
+      "fieldName": "icono",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "visible",
+      "fieldName": "visible",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Funcionalidad",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "funcionalidad",
+      "otherEntityRelationshipName": "padre",
+      "relationshipName": "hijos",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "funcionalidad",
+      "otherEntityRelationshipName": "hijos",
+      "relationshipName": "padre",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

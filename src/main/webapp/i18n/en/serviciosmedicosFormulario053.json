@@ -1,0 +1,47 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosFormulario053": {
+      "home": {
+        "title": "Formulario 053 S",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Formulario 053",
+        "createOrEditLabel": "Create or edit a Formulario 053",
+        "notFound": "No Formulario 053 S found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Formulario 053 {{ id }}?"
+      },
+      "detail": {
+        "title": "Formulario 053"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "numeroHistoriaClinica": "Numero Historia Clinica",
+      "servicioEspecialidad": "Servicio Especialidad",
+      "tipoId": "Tipo Id",
+      "pacienteId": "Paciente Id",
+      "doctorId": "Doctor Id",
+      "establecimientoOrigenId": "Establecimiento Origen Id",
+      "establecimientoDestinoId": "Establecimiento Destino Id",
+      "especialidadId": "Especialidad Id",
+      "help": {
+        "fecha": "fecha",
+        "numeroHistoriaClinica": "numeroHistoriaClinica",
+        "servicioEspecialidad": "servicioEspecialidad",
+        "tipoId": "tipoId",
+        "pacienteId": "pacienteId",
+        "doctorId": "doctorId",
+        "establecimientoOrigenId": "establecimientoOrigenId",
+        "establecimientoDestinoId": "establecimientoDestinoId",
+        "especialidadId": "especialidadId"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosFormulario053": {
+      "created": "A new Formulario 053 is created with identifier {{ param }}",
+      "updated": "A Formulario 053 is updated with identifier {{ param }}",
+      "deleted": "A Formulario 053 is deleted with identifier {{ param }}"
+    }
+  }
+}

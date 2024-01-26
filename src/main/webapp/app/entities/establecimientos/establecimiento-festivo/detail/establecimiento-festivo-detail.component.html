@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (establecimientoFestivo) {
+      <div>
+        <h2 data-cy="establecimientoFestivoDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosEstablecimientoFestivo.detail.title">Establecimiento Festivo</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ establecimientoFestivo.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosEstablecimientoFestivo.activo"
+              [ngbTooltip]="'gatewayApp.establecimientosEstablecimientoFestivo.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ establecimientoFestivo.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosEstablecimientoFestivo.establecimiento">Establecimiento</span></dt>
+          <dd>
+            @if (establecimientoFestivo.establecimiento) {
+              <div>
+                <a [routerLink]="['/establecimiento', establecimientoFestivo.establecimiento.id, 'view']">{{
+                  establecimientoFestivo.establecimiento.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.establecimientosEstablecimientoFestivo.festivo">Festivo</span></dt>
+          <dd>
+            @if (establecimientoFestivo.festivo) {
+              <div>
+                <a [routerLink]="['/festivo', establecimientoFestivo.festivo.id, 'view']">{{ establecimientoFestivo.festivo.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/establecimiento-festivo', establecimientoFestivo.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

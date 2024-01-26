@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosTipoTramite": {
+      "home": {
+        "title": "Tipo Tramites",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tipo Tramite",
+        "createOrEditLabel": "Crear o editar Tipo Tramite",
+        "notFound": "Ningún Tipo Tramites encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Tramite {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Tramite"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "codigo": "Codigo",
+      "estadosId": "Estados Id",
+      "documentos": "Documentos",
+      "help": {
+        "nombre": "nombre",
+        "codigo": "codigo",
+        "estadosId": "estadosId"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosTipoTramite": {
+      "created": "Un nuevo Tipo Tramite ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Tramite ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Tramite ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

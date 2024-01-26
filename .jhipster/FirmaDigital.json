@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20240126155124"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The FirmaDigital entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "firma_digital",
+  "fields": [
+    {
+      "documentation": "fechaDesde",
+      "fieldName": "fechaDesde",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "fechaHasta",
+      "fieldName": "fechaHasta",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "path",
+      "fieldName": "path",
+      "fieldType": "String"
+    }
+  ],
+  "name": "FirmaDigital",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "tipo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "identificacion",
+      "otherEntityName": "persona",
+      "relationshipName": "persona",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

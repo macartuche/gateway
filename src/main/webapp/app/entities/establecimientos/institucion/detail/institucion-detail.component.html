@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (institucion) {
+      <div>
+        <h2 data-cy="institucionDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosInstitucion.detail.title">Institucion</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ institucion.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosInstitucion.codigo"
+              [ngbTooltip]="'gatewayApp.establecimientosInstitucion.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ institucion.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosInstitucion.nombre"
+              [ngbTooltip]="'gatewayApp.establecimientosInstitucion.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ institucion.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosInstitucion.permiteDerivacion"
+              [ngbTooltip]="'gatewayApp.establecimientosInstitucion.help.permiteDerivacion' | translate"
+              >Permite Derivacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ institucion.permiteDerivacion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosInstitucion.permiteReferencia"
+              [ngbTooltip]="'gatewayApp.establecimientosInstitucion.help.permiteReferencia' | translate"
+              >Permite Referencia</span
+            >
+          </dt>
+          <dd>
+            <span>{{ institucion.permiteReferencia }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosInstitucion.permiteContrareferencia"
+              [ngbTooltip]="'gatewayApp.establecimientosInstitucion.help.permiteContrareferencia' | translate"
+              >Permite Contrareferencia</span
+            >
+          </dt>
+          <dd>
+            <span>{{ institucion.permiteContrareferencia }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosInstitucion.estadoId"
+              [ngbTooltip]="'gatewayApp.establecimientosInstitucion.help.estadoId' | translate"
+              >Estado Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ institucion.estadoId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/institucion', institucion.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,50 @@
+{
+  "gatewayApp": {
+    "establecimientosEstablecimiento": {
+      "home": {
+        "title": "Establecimientos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Establecimiento",
+        "createOrEditLabel": "Create or edit a Establecimiento",
+        "notFound": "No Establecimientos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Establecimiento"
+      },
+      "id": "ID",
+      "unicodigo": "Unicodigo",
+      "nombre": "Nombre",
+      "barrio": "Barrio",
+      "direccion": "Direccion",
+      "referencia": "Referencia",
+      "telefono": "Telefono",
+      "ambitoId": "Ambito Id",
+      "estadoId": "Estado Id",
+      "parroquia": "Parroquia",
+      "entidad": "Entidad",
+      "institucion": "Institucion",
+      "tipo": "Tipo",
+      "horario": "Horario",
+      "help": {
+        "unicodigo": "unicodigo del establecimiento",
+        "nombre": "nombre del establecimiento",
+        "barrio": "barrio",
+        "direccion": "direccion",
+        "referencia": "referenciax",
+        "telefono": "telefono",
+        "ambitoId": "ambitoId",
+        "estadoId": "estadoId"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosEstablecimiento": {
+      "created": "A new Establecimiento is created with identifier {{ param }}",
+      "updated": "A Establecimiento is updated with identifier {{ param }}",
+      "deleted": "A Establecimiento is deleted with identifier {{ param }}"
+    }
+  }
+}

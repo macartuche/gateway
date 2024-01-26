@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (horarioEstablecimiento) {
+      <div>
+        <h2 data-cy="horarioEstablecimientoDetailsHeading">
+          <span jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.detail.title">Horario Establecimiento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ horarioEstablecimiento.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.nombre"
+              [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ horarioEstablecimiento.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.numeroHoras"
+              [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.numeroHoras' | translate"
+              >Numero Horas</span
+            >
+          </dt>
+          <dd>
+            <span>{{ horarioEstablecimiento.numeroHoras }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.descripcion"
+              [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.descripcion' | translate"
+              >Descripcion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ horarioEstablecimiento.descripcion }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.horaInicio"
+              [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.horaInicio' | translate"
+              >Hora Inicio</span
+            >
+          </dt>
+          <dd>
+            <span>{{ horarioEstablecimiento.horaInicio | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.establecimientosHorarioEstablecimiento.horaFin"
+              [ngbTooltip]="'gatewayApp.establecimientosHorarioEstablecimiento.help.horaFin' | translate"
+              >Hora Fin</span
+            >
+          </dt>
+          <dd>
+            <span>{{ horarioEstablecimiento.horaFin | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/horario-establecimiento', horarioEstablecimiento.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

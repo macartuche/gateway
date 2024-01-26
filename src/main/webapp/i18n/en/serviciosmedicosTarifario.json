@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosTarifario": {
+      "home": {
+        "title": "Tarifarios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tarifario",
+        "createOrEditLabel": "Create or edit a Tarifario",
+        "notFound": "No Tarifarios found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Tarifario {{ id }}?"
+      },
+      "detail": {
+        "title": "Tarifario"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "descripcion": "Descripcion",
+      "valor": "Valor",
+      "help": {
+        "codigo": "codigo",
+        "descripcion": "descripcion",
+        "valor": "valor"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosTarifario": {
+      "created": "A new Tarifario is created with identifier {{ param }}",
+      "updated": "A Tarifario is updated with identifier {{ param }}",
+      "deleted": "A Tarifario is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20240126155524"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The HorarioEstablecimiento entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "horario_establecimiento",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "numeroHoras",
+      "fieldName": "numeroHoras",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "descripcion",
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "hora inicio",
+      "fieldName": "horaInicio",
+      "fieldType": "Instant"
+    },
+    {
+      "documentation": "hora fin",
+      "fieldName": "horaFin",
+      "fieldType": "Instant"
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "HorarioEstablecimiento",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

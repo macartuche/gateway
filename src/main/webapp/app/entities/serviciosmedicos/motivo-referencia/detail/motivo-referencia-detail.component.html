@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (motivoReferencia) {
+      <div>
+        <h2 data-cy="motivoReferenciaDetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.detail.title">Motivo Referencia</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ motivoReferencia.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.detalle"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosMotivoReferencia.help.detalle' | translate"
+              >Detalle</span
+            >
+          </dt>
+          <dd>
+            <span>{{ motivoReferencia.detalle }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.tipoId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosMotivoReferencia.help.tipoId' | translate"
+              >Tipo Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ motivoReferencia.tipoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosMotivoReferencia.referencia">Referencia</span></dt>
+          <dd>
+            @if (motivoReferencia.referencia) {
+              <div>
+                <a [routerLink]="['/formulario-053-referencia', motivoReferencia.referencia.id, 'view']">{{
+                  motivoReferencia.referencia.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/motivo-referencia', motivoReferencia.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

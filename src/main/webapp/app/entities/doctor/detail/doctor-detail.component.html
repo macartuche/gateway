@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (doctor) {
+      <div>
+        <h2 data-cy="doctorDetailsHeading"><span jhiTranslate="gatewayApp.doctor.detail.title">Doctor</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ doctor.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.doctor.codigo" [ngbTooltip]="'gatewayApp.doctor.help.codigo' | translate">Codigo</span></dt>
+          <dd>
+            <span>{{ doctor.codigo }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.doctor.activo" [ngbTooltip]="'gatewayApp.doctor.help.activo' | translate">Activo</span></dt>
+          <dd>
+            <span>{{ doctor.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.doctor.persona">Persona</span></dt>
+          <dd>
+            @if (doctor.persona) {
+              <div>
+                <a [routerLink]="['/persona', doctor.persona.id, 'view']">{{ doctor.persona.primerNombre }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/doctor', doctor.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

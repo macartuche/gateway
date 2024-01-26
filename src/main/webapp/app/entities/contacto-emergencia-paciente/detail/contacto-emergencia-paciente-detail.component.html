@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (contactoEmergenciaPaciente) {
+      <div>
+        <h2 data-cy="contactoEmergenciaPacienteDetailsHeading">
+          <span jhiTranslate="gatewayApp.contactoEmergenciaPaciente.detail.title">Contacto Emergencia Paciente</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ contactoEmergenciaPaciente.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.contactoEmergenciaPaciente.nombre"
+              [ngbTooltip]="'gatewayApp.contactoEmergenciaPaciente.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ contactoEmergenciaPaciente.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.contactoEmergenciaPaciente.telefono"
+              [ngbTooltip]="'gatewayApp.contactoEmergenciaPaciente.help.telefono' | translate"
+              >Telefono</span
+            >
+          </dt>
+          <dd>
+            <span>{{ contactoEmergenciaPaciente.telefono }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.contactoEmergenciaPaciente.direccion"
+              [ngbTooltip]="'gatewayApp.contactoEmergenciaPaciente.help.direccion' | translate"
+              >Direccion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ contactoEmergenciaPaciente.direccion }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.contactoEmergenciaPaciente.paciente">Paciente</span></dt>
+          <dd>
+            @if (contactoEmergenciaPaciente.paciente) {
+              <div>
+                <a [routerLink]="['/paciente', contactoEmergenciaPaciente.paciente.id, 'view']">{{
+                  contactoEmergenciaPaciente.paciente.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.contactoEmergenciaPaciente.parentezco">Parentezco</span></dt>
+          <dd>
+            @if (contactoEmergenciaPaciente.parentezco) {
+              <div>
+                <a [routerLink]="['/catalogo-item', contactoEmergenciaPaciente.parentezco.id, 'view']">{{
+                  contactoEmergenciaPaciente.parentezco.nombre
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/contacto-emergencia-paciente', contactoEmergenciaPaciente.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

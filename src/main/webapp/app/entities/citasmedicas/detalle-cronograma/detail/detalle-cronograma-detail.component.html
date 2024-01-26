@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (detalleCronograma) {
+      <div>
+        <h2 data-cy="detalleCronogramaDetailsHeading">
+          <span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.detail.title">Detalle Cronograma</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ detalleCronograma.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.fecha"
+              [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.fecha' | translate"
+              >Fecha</span
+            >
+          </dt>
+          <dd>
+            <span>{{ detalleCronograma.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.cantidad"
+              [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.cantidad' | translate"
+              >Cantidad</span
+            >
+          </dt>
+          <dd>
+            <span>{{ detalleCronograma.cantidad }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.activo"
+              [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ detalleCronograma.activo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.fechaDesactivacion"
+              [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.fechaDesactivacion' | translate"
+              >Fecha Desactivacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ detalleCronograma.fechaDesactivacion | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.tipoId"
+              [ngbTooltip]="'gatewayApp.citasmedicasDetalleCronograma.help.tipoId' | translate"
+              >Tipo Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ detalleCronograma.tipoId }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.citasmedicasDetalleCronograma.cronograma">Cronograma</span></dt>
+          <dd>
+            @if (detalleCronograma.cronograma) {
+              <div>
+                <a [routerLink]="['/cronograma', detalleCronograma.cronograma.id, 'view']">{{ detalleCronograma.cronograma.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/detalle-cronograma', detalleCronograma.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

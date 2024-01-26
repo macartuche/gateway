@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20240126152624"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The ContactoEmergenciaPaciente entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "contacto_emergencia_paciente",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "telefono",
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "direccion",
+      "fieldName": "direccion",
+      "fieldType": "String"
+    }
+  ],
+  "name": "ContactoEmergenciaPaciente",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "paciente",
+      "relationshipName": "paciente",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "parentezco",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

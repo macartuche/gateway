@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20240126153424"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The UsuarioEstablecimiento entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "usuario_establecimiento",
+  "fields": [
+    {
+      "documentation": "usuario activo para determinado establecimiento",
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "usuarioId",
+      "fieldName": "usuarioId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "tipoId",
+      "fieldName": "tipoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "UsuarioEstablecimiento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "establecimiento",
+      "relationshipName": "establecimiento",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

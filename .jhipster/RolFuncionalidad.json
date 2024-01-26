@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20240126150824"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The RolFuncionalidad entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "rol_funcionalidad",
+  "fields": [
+    {
+      "documentation": "rol",
+      "fieldName": "rol",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "activo",
+      "fieldName": "activo",
+      "fieldType": "Boolean"
+    },
+    {
+      "documentation": "prioridad",
+      "fieldName": "prioridad",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "RolFuncionalidad",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Funcionalidad asignada a rol",
+      "otherEntityField": "nombre",
+      "otherEntityName": "funcionalidad",
+      "relationshipName": "funcionalidad",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

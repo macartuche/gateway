@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (turno) {
+      <div>
+        <h2 data-cy="turnoDetailsHeading"><span jhiTranslate="gatewayApp.citasmedicasTurno.detail.title">Turno</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ turno.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.citasmedicasTurno.orden" [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.orden' | translate"
+              >Orden</span
+            >
+          </dt>
+          <dd>
+            <span>{{ turno.orden }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.citasmedicasTurno.horaInicio"
+              [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.horaInicio' | translate"
+              >Hora Inicio</span
+            >
+          </dt>
+          <dd>
+            <span>{{ turno.horaInicio | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.citasmedicasTurno.horaFin" [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.horaFin' | translate"
+              >Hora Fin</span
+            >
+          </dt>
+          <dd>
+            <span>{{ turno.horaFin | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.citasmedicasTurno.activo" [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.activo' | translate"
+              >Activo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ turno.activo }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.citasmedicasTurno.extra" [ngbTooltip]="'gatewayApp.citasmedicasTurno.help.extra' | translate"
+              >Extra</span
+            >
+          </dt>
+          <dd>
+            <span>{{ turno.extra }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.citasmedicasTurno.detalleCronograma">Detalle Cronograma</span></dt>
+          <dd>
+            @if (turno.detalleCronograma) {
+              <div>
+                <a [routerLink]="['/detalle-cronograma', turno.detalleCronograma.id, 'view']">{{ turno.detalleCronograma.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/turno', turno.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

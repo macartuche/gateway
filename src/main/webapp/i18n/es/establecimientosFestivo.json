@@ -1,0 +1,37 @@
+{
+  "gatewayApp": {
+    "establecimientosFestivo": {
+      "home": {
+        "title": "Festivos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Festivo",
+        "createOrEditLabel": "Crear o editar Festivo",
+        "notFound": "Ningún Festivos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Festivo {{ id }}?"
+      },
+      "detail": {
+        "title": "Festivo"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "fechaInicio": "Fecha Inicio",
+      "fechaFin": "Fecha Fin",
+      "activo": "Activo",
+      "help": {
+        "nombre": "nombre de periodo festivo",
+        "fechaInicio": "fecha de inicio de periodo festivo",
+        "fechaFin": "fecha de fin de periodo festivo",
+        "activo": "activo?"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosFestivo": {
+      "created": "Un nuevo Festivo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Festivo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Festivo ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

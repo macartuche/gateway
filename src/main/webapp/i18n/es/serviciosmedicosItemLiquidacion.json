@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosItemLiquidacion": {
+      "home": {
+        "title": "Item Liquidacions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Item Liquidacion",
+        "createOrEditLabel": "Crear o editar Item Liquidacion",
+        "notFound": "Ningún Item Liquidacions encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Item Liquidacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Item Liquidacion"
+      },
+      "id": "ID",
+      "fecha": "Fecha",
+      "habilitado": "Habilitado",
+      "continuidad": "Continuidad",
+      "help": {
+        "fecha": "fecha",
+        "habilitado": "habilitado"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosItemLiquidacion": {
+      "created": "Un nuevo Item Liquidacion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Item Liquidacion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Item Liquidacion ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (tipoTramite) {
+      <div>
+        <h2 data-cy="tipoTramiteDetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.detail.title">Tipo Tramite</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ tipoTramite.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.nombre"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTipoTramite.help.nombre' | translate"
+              >Nombre</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tipoTramite.nombre }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.codigo"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTipoTramite.help.codigo' | translate"
+              >Codigo</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tipoTramite.codigo }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosTipoTramite.estadosId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosTipoTramite.help.estadosId' | translate"
+              >Estados Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ tipoTramite.estadosId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/tipo-tramite', tipoTramite.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

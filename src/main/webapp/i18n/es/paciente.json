@@ -1,0 +1,55 @@
+{
+  "gatewayApp": {
+    "paciente": {
+      "home": {
+        "title": "Pacientes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Paciente",
+        "createOrEditLabel": "Crear o editar Paciente",
+        "notFound": "Ningún Pacientes encontrado"
+      },
+      "created": "Un nuevo Paciente ha sido creado con el identificador {{ param }}",
+      "updated": "Un Paciente ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Paciente ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Paciente {{ id }}?"
+      },
+      "detail": {
+        "title": "Paciente"
+      },
+      "id": "ID",
+      "lugarNacimiento": "Lugar Nacimiento",
+      "fechaNacimiento": "Fecha Nacimiento",
+      "callePrincipal": "Calle Principal",
+      "numeroCasa": "Numero Casa",
+      "calleSecundaria": "Calle Secundaria",
+      "barrio": "Barrio",
+      "referenciaDomicilio": "Referencia Domicilio",
+      "seguroSaludSecundario": "Seguro Salud Secundario",
+      "identificacionRepresentante": "Identificacion Representante",
+      "discapacidad": "Discapacidad",
+      "persona": "Persona",
+      "parroquiaNacimiento": "Parroquia Nacimiento",
+      "parroquiaResidencia": "Parroquia Residencia",
+      "autoidentificacionEtnica": "Autoidentificacion Etnica",
+      "nacionalidadEtnica": "Nacionalidad Etnica",
+      "pueblo": "Pueblo",
+      "tipoEmpresaTrabajo": "Tipo Empresa Trabajo",
+      "profesionOcupacion": "Profesion Ocupacion",
+      "seguroSaludPrincipal": "Seguro Salud Principal",
+      "tipoBono": "Tipo Bono",
+      "procedenciaRepresentante": "Procedencia Representante",
+      "help": {
+        "lugarNacimiento": "lugarNacimiento",
+        "fechaNacimiento": "fecha de nacimiento",
+        "callePrincipal": "calle principal",
+        "numeroCasa": "numero",
+        "calleSecundaria": "calle secundaria",
+        "barrio": "barrio",
+        "referenciaDomicilio": "referencia de domicilio",
+        "seguroSaludSecundario": "seguro Salud Secundario",
+        "identificacionRepresentante": "identificacion de representante en caso de aplicar"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosTramite": {
+      "home": {
+        "title": "Tramites",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tramite",
+        "createOrEditLabel": "Create or edit a Tramite",
+        "notFound": "No Tramites found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Tramite {{ id }}?"
+      },
+      "detail": {
+        "title": "Tramite"
+      },
+      "id": "ID",
+      "codigoValidacion": "Codigo Validacion",
+      "numero": "Numero",
+      "estadoId": "Estado Id",
+      "pacienteId": "Paciente Id",
+      "establecimientoOrigenId": "Establecimiento Origen Id",
+      "establecimientoDestinoId": "Establecimiento Destino Id",
+      "formulario": "Formulario",
+      "tipoTramite": "Tipo Tramite",
+      "help": {
+        "codigoValidacion": "codigoValidacion",
+        "numero": "numero",
+        "estadoId": "estadoId",
+        "pacienteId": "pacienteId",
+        "establecimientoOrigenId": "establecimientoOrigenId",
+        "establecimientoDestinoId": "establecimientoDestinoId"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosTramite": {
+      "created": "A new Tramite is created with identifier {{ param }}",
+      "updated": "A Tramite is updated with identifier {{ param }}",
+      "deleted": "A Tramite is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "annotations": {
+    "changelogDate": "20240126151924"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The Establecimiento entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "establecimiento",
+  "fields": [
+    {
+      "documentation": "unicodigo del establecimiento",
+      "fieldName": "unicodigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "nombre del establecimiento",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "barrio",
+      "fieldName": "barrio",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "direccion",
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "referenciax",
+      "fieldName": "referencia",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "telefono",
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "documentation": "ambitoId",
+      "fieldName": "ambitoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "estadoId",
+      "fieldName": "estadoId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "Establecimiento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "documentation": "Parroquia a la que pertenece el establecimiento",
+      "otherEntityField": "nombre",
+      "otherEntityName": "parroquia",
+      "relationshipName": "parroquia",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "documentation": "Entidad a la que pertenece el establecimiento",
+      "otherEntityField": "nombre",
+      "otherEntityName": "entidad",
+      "relationshipName": "entidad",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "documentation": "Institucion a la que pertenece el establecimiento",
+      "otherEntityField": "nombre",
+      "otherEntityName": "institucion",
+      "relationshipName": "institucion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "tipoEstablecimiento",
+      "relationshipName": "tipo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "horarioEstablecimiento",
+      "relationshipName": "horario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

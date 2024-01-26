@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (formulario053Contrareferencia) {
+      <div>
+        <h2 data-cy="formulario053ContrareferenciaDetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.detail.title">Formulario 053 Contrareferencia</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ formulario053Contrareferencia.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.hallazgosRelevantes"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.hallazgosRelevantes' | translate"
+              >Hallazgos Relevantes</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053Contrareferencia.hallazgosRelevantes }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.resumen"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.resumen' | translate"
+              >Resumen</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053Contrareferencia.resumen }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.tratamientoProcedimientosRealizados"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.tratamientoProcedimientosRealizados' | translate"
+              >Tratamiento Procedimientos Realizados</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053Contrareferencia.tratamientoProcedimientosRealizados }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.tratamientoRecomendado"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.tratamientoRecomendado' | translate"
+              >Tratamiento Recomendado</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053Contrareferencia.tratamientoRecomendado }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.referenciaJustificada"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053Contrareferencia.help.referenciaJustificada' | translate"
+              >Referencia Justificada</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053Contrareferencia.referenciaJustificada }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.serviciosmedicosFormulario053Contrareferencia.formulario">Formulario</span></dt>
+          <dd>
+            @if (formulario053Contrareferencia.formulario) {
+              <div>
+                <a [routerLink]="['/formulario-053', formulario053Contrareferencia.formulario.id, 'view']">{{
+                  formulario053Contrareferencia.formulario.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button
+          type="button"
+          [routerLink]="['/formulario-053-contrareferencia', formulario053Contrareferencia.id, 'edit']"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

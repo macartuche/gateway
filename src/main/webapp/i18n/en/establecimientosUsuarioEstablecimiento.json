@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "establecimientosUsuarioEstablecimiento": {
+      "home": {
+        "title": "Usuario Establecimientos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Usuario Establecimiento",
+        "createOrEditLabel": "Create or edit a Usuario Establecimiento",
+        "notFound": "No Usuario Establecimientos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Usuario Establecimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Usuario Establecimiento"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "usuarioId": "Usuario Id",
+      "tipoId": "Tipo Id",
+      "establecimiento": "Establecimiento",
+      "help": {
+        "activo": "usuario activo para determinado establecimiento",
+        "usuarioId": "usuarioId",
+        "tipoId": "tipoId"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosUsuarioEstablecimiento": {
+      "created": "A new Usuario Establecimiento is created with identifier {{ param }}",
+      "updated": "A Usuario Establecimiento is updated with identifier {{ param }}",
+      "deleted": "A Usuario Establecimiento is deleted with identifier {{ param }}"
+    }
+  }
+}

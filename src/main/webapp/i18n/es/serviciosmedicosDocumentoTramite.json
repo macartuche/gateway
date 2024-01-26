@@ -1,0 +1,37 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosDocumentoTramite": {
+      "home": {
+        "title": "Documento Tramites",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Documento Tramite",
+        "createOrEditLabel": "Crear o editar Documento Tramite",
+        "notFound": "Ningún Documento Tramites encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Documento Tramite {{ id }}?"
+      },
+      "detail": {
+        "title": "Documento Tramite"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "fecha": "Fecha",
+      "url": "Url",
+      "documento": "Documento",
+      "tramite": "Tramite",
+      "help": {
+        "nombre": "nombre",
+        "fecha": "fecha",
+        "url": "url"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosDocumentoTramite": {
+      "created": "Un nuevo Documento Tramite ha sido creado con el identificador {{ param }}",
+      "updated": "Un Documento Tramite ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Documento Tramite ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

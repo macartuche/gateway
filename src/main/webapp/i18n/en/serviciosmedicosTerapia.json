@@ -1,0 +1,40 @@
+{
+  "gatewayApp": {
+    "serviciosmedicosTerapia": {
+      "home": {
+        "title": "Terapias",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Terapia",
+        "createOrEditLabel": "Create or edit a Terapia",
+        "notFound": "No Terapias found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Terapia {{ id }}?"
+      },
+      "detail": {
+        "title": "Terapia"
+      },
+      "id": "ID",
+      "cantidad": "Cantidad",
+      "descripcion": "Descripcion",
+      "habilitado": "Habilitado",
+      "valorUnitarioEstablecimiento": "Valor Unitario Establecimiento",
+      "continuidad": "Continuidad",
+      "itemLiquidacion": "Item Liquidacion",
+      "tarifario": "Tarifario",
+      "help": {
+        "cantidad": "cantidad",
+        "descripcion": "descripcion",
+        "habilitado": "habilitado",
+        "valorUnitarioEstablecimiento": "valorUnitarioEstablecimiento"
+      }
+    }
+  },
+  "serviciosmedicosApp": {
+    "serviciosmedicosTerapia": {
+      "created": "A new Terapia is created with identifier {{ param }}",
+      "updated": "A Terapia is updated with identifier {{ param }}",
+      "deleted": "A Terapia is deleted with identifier {{ param }}"
+    }
+  }
+}

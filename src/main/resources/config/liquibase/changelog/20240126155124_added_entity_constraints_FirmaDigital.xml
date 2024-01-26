@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity FirmaDigital.
+    -->
+    <changeSet id="20240126155124-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="tipo_id"
+                                 baseTableName="firma_digital"
+                                 constraintName="fk_firma_digital__tipo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="catalogo_item"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="persona_id"
+                                 baseTableName="firma_digital"
+                                 constraintName="fk_firma_digital__persona_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="persona"
+                                 />
+    </changeSet>
+</databaseChangeLog>

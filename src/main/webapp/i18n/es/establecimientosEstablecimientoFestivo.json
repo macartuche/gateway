@@ -1,0 +1,33 @@
+{
+  "gatewayApp": {
+    "establecimientosEstablecimientoFestivo": {
+      "home": {
+        "title": "Establecimiento Festivos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Establecimiento Festivo",
+        "createOrEditLabel": "Crear o editar Establecimiento Festivo",
+        "notFound": "Ningún Establecimiento Festivos encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Establecimiento Festivo {{ id }}?"
+      },
+      "detail": {
+        "title": "Establecimiento Festivo"
+      },
+      "id": "ID",
+      "activo": "Activo",
+      "establecimiento": "Establecimiento",
+      "festivo": "Festivo",
+      "help": {
+        "activo": "activo"
+      }
+    }
+  },
+  "establecimientosApp": {
+    "establecimientosEstablecimientoFestivo": {
+      "created": "Un nuevo Establecimiento Festivo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Establecimiento Festivo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Establecimiento Festivo ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

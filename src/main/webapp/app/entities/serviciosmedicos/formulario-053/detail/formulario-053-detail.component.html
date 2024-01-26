@@ -1,0 +1,122 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (formulario053) {
+      <div>
+        <h2 data-cy="formulario053DetailsHeading">
+          <span jhiTranslate="gatewayApp.serviciosmedicosFormulario053.detail.title">Formulario 053</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ formulario053.id }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.fecha"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.fecha' | translate"
+              >Fecha</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.numeroHistoriaClinica"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.numeroHistoriaClinica' | translate"
+              >Numero Historia Clinica</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.numeroHistoriaClinica }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.servicioEspecialidad"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.servicioEspecialidad' | translate"
+              >Servicio Especialidad</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.servicioEspecialidad }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.tipoId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.tipoId' | translate"
+              >Tipo Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.tipoId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.pacienteId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.pacienteId' | translate"
+              >Paciente Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.pacienteId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.doctorId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.doctorId' | translate"
+              >Doctor Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.doctorId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.establecimientoOrigenId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.establecimientoOrigenId' | translate"
+              >Establecimiento Origen Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.establecimientoOrigenId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.establecimientoDestinoId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.establecimientoDestinoId' | translate"
+              >Establecimiento Destino Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.establecimientoDestinoId }}</span>
+          </dd>
+          <dt>
+            <span
+              jhiTranslate="gatewayApp.serviciosmedicosFormulario053.especialidadId"
+              [ngbTooltip]="'gatewayApp.serviciosmedicosFormulario053.help.especialidadId' | translate"
+              >Especialidad Id</span
+            >
+          </dt>
+          <dd>
+            <span>{{ formulario053.especialidadId }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/formulario-053', formulario053.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

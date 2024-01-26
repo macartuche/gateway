@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20240126152724"
+  },
+  "applications": ["gateway"],
+  "databaseType": "sql",
+  "documentation": "The Especialidad entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "especialidad",
+  "fields": [
+    {
+      "documentation": "nombre",
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "documentation": "activa",
+      "fieldName": "activa",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Especialidad",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "catalogoItem",
+      "relationshipName": "tipo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

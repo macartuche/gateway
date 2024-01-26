@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20240126155224"
+  },
+  "applications": ["gateway", "establecimientos"],
+  "clientRootFolder": "establecimientos",
+  "databaseType": "sql",
+  "documentation": "The EstablecimientoFestivo entity.\\n@author Usuario",
+  "dto": "mapstruct",
+  "entityTableName": "establecimiento_festivo",
+  "fields": [
+    {
+      "documentation": "activo",
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "establecimientos",
+  "name": "EstablecimientoFestivo",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "establecimiento",
+      "relationshipName": "establecimiento",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "festivo",
+      "relationshipName": "festivo",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

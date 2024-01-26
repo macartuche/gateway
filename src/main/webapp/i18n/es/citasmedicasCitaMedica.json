@@ -1,0 +1,48 @@
+{
+  "gatewayApp": {
+    "citasmedicasCitaMedica": {
+      "home": {
+        "title": "Cita Medicas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Cita Medica",
+        "createOrEditLabel": "Crear o editar Cita Medica",
+        "notFound": "Ningún Cita Medicas encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Cita Medica {{ id }}?"
+      },
+      "detail": {
+        "title": "Cita Medica"
+      },
+      "id": "ID",
+      "fechaInicioAtencion": "Fecha Inicio Atencion",
+      "fechaFinAtencion": "Fecha Fin Atencion",
+      "horaInicioAtencion": "Hora Inicio Atencion",
+      "horaFinAtencion": "Hora Fin Atencion",
+      "activa": "Activa",
+      "observacion": "Observacion",
+      "estadoId": "Estado Id",
+      "pacienteId": "Paciente Id",
+      "tramiteId": "Tramite Id",
+      "turno": "Turno",
+      "help": {
+        "fechaInicioAtencion": "fecha de cita medica",
+        "fechaFinAtencion": "hora finalizacion atencion cita medica",
+        "horaInicioAtencion": "hora inicio atencion cita medica",
+        "horaFinAtencion": "hora finalizacion atencion de cita medica",
+        "activa": "cita activa, no borrada",
+        "observacion": "observacion cita medica",
+        "estadoId": "estadoId",
+        "pacienteId": "pacienteId",
+        "tramiteId": "tramiteId"
+      }
+    }
+  },
+  "citasmedicasApp": {
+    "citasmedicasCitaMedica": {
+      "created": "Un nuevo Cita Medica ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cita Medica ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cita Medica ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

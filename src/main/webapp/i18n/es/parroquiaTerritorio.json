@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "parroquiaTerritorio": {
+      "home": {
+        "title": "Parroquia Territorios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Parroquia Territorio",
+        "createOrEditLabel": "Crear o editar Parroquia Territorio",
+        "notFound": "Ningún Parroquia Territorios encontrado"
+      },
+      "created": "Un nuevo Parroquia Territorio ha sido creado con el identificador {{ param }}",
+      "updated": "Un Parroquia Territorio ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Parroquia Territorio ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Parroquia Territorio {{ id }}?"
+      },
+      "detail": {
+        "title": "Parroquia Territorio"
+      },
+      "id": "ID",
+      "codigo": "Codigo",
+      "nombre": "Nombre",
+      "canton": "Canton",
+      "help": {
+        "codigo": "codigo",
+        "nombre": "nombre"
+      }
+    }
+  }
+}
