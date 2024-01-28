@@ -1,5 +1,6 @@
 package ec.gob.loja.gateway.web.rest;
 
+import ec.gob.loja.gateway.domain.User;
 import ec.gob.loja.gateway.repository.UserRepository;
 import ec.gob.loja.gateway.security.SecurityUtils;
 import ec.gob.loja.gateway.service.MailService;
@@ -85,10 +86,8 @@ public class AccountResource {
      */
     @GetMapping("/account")
     public Mono<AdminUserDTO> getAccount() {
-        return userService
-            .getUserWithAuthorities()
-            .map(AdminUserDTO::new)
-            .switchIfEmpty(Mono.error(new AccountResourceException("User could not be found")));
+        Mono<User> user = userService.getUserWithAuthorities();
+        return user.map(AdminUserDTO::new).switchIfEmpty(Mono.error(new AccountResourceException("User could not be found")));
     }
 
     /**
