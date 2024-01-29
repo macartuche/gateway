@@ -10,6 +10,67 @@ Main page styles
   background-size: contain;
 }
 
+.establecimiento {
+  font-size: 2rem !important;
+}
+
+.box {
+  border-radius: 20px;
+  margin: 20px;
+  background: #ad5757;
+  height: 140px;
+}
+
+.blue {
+  background: #2980b9;
+}
+.green {
+  background: #27ae60;
+}
+
+.gray {
+  background: #95a5a6;
+}
+
+.iconHome {
+  width: 25%;
+  display: inline-block;
+  color: #fff;
+  height: 140px;
+}
+
+.info {
+  width: 73%;
+  display: inline-block;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.middle {
+  line-height: 140px;
+}
+
+.iconMenu {
+  color: #2d6fbc;
+}
+
+.linkMenu {
+  color: #2d6fbc;
+}
+
+.nav-link > span:hover {
+  text-decoration: underline;
+}
+
+.titleMenuPrinc {
+  font-weight: bold;
+  color: #2d6fbc;
+}
+
+ul.submenu li {
+  list-style-type: square !important;
+}
+
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
   only screen and (-moz-min-device-pixel-ratio: 2),

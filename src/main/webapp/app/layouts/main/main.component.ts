@@ -7,6 +7,8 @@ import { AccountService } from 'app/core/auth/account.service';
 import { AppPageTitleStrategy } from 'app/app-page-title-strategy';
 import FooterComponent from '../footer/footer.component';
 import PageRibbonComponent from '../profiles/page-ribbon.component';
+import { IconSetService } from '@coreui/icons-angular';
+import { iconSubset } from '../icons/icon-subset';
 
 @Component({
   selector: 'jhi-main',
@@ -24,8 +26,10 @@ export default class MainComponent implements OnInit {
     private accountService: AccountService,
     private translateService: TranslateService,
     rootRenderer: RendererFactory2,
+    private iconSetService: IconSetService,
   ) {
     this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);
+    iconSetService.icons = { ...iconSubset };
   }
 
   ngOnInit(): void {

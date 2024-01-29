@@ -1,0 +1,37 @@
+<!--sidebar-->
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed" id="sidebar" visible unfoldable>
+  <c-sidebar-brand
+    [brandFull]="{
+      src: 'content/images/coreui-angular.svg',
+      width: 200,
+      height: 46,
+      alt: 'CoreUI Logo'
+    }"
+    [brandNarrow]="{
+      src: 'content/images/coreui-signet-white.svg',
+      width: 46,
+      height: 46,
+      alt: 'CoreUI Logo'
+    }"
+    routerLink="./"
+  />
+
+  <ng-scrollbar pointerEventsMethod="scrollbar">
+    <c-sidebar-nav [navItems]="navItems" dropdownMode="none" />
+  </ng-scrollbar>
+  <c-sidebar-toggler *ngIf="!sidebar.narrow" toggle="unfoldable" cSidebarToggle="sidebar" />
+</c-sidebar>
+
+<!--main-->
+<div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
+  <!--app-header-->
+  <jhi-default-header class="mb-4 d-print-none header header-sticky" position="sticky" sidebarId="sidebar" />
+  <!--app-body-->
+  <div class="body flex-grow-1 px-3">
+    <c-container fluid="true" class="h-auto card jh-card">
+      <router-outlet />
+    </c-container>
+  </div>
+  <!--app footer-->
+  <jhi-default-footer />
+</div>

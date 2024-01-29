@@ -1,22 +1,32 @@
 package ec.gob.loja.gateway.web.rest;
 
+import ec.gob.loja.gateway.domain.Authority;
 import ec.gob.loja.gateway.domain.User;
 import ec.gob.loja.gateway.repository.UserRepository;
 import ec.gob.loja.gateway.security.SecurityUtils;
 import ec.gob.loja.gateway.service.MailService;
 import ec.gob.loja.gateway.service.UserService;
 import ec.gob.loja.gateway.service.dto.AdminUserDTO;
+import ec.gob.loja.gateway.service.dto.FuncionalidadPorUsuario;
+import ec.gob.loja.gateway.service.dto.IFuncionalidadesNativeDTO;
 import ec.gob.loja.gateway.service.dto.PasswordChangeDTO;
+import ec.gob.loja.gateway.service.mapper.UserMapper;
 import ec.gob.loja.gateway.web.rest.errors.*;
 import ec.gob.loja.gateway.web.rest.vm.KeyAndPasswordVM;
 import ec.gob.loja.gateway.web.rest.vm.ManagedUserVM;
 import jakarta.validation.Valid;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -41,19 +51,25 @@ public class AccountResource {
 
     private final MailService mailService;
 
-    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
+    private final UserMapper userMapper;
+
+    public AccountResource(UserRepository userRepository, UserService userService, MailService mailService, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;
+        this.userMapper = userMapper;
     }
 
     /**
      * {@code POST  /register} : register the user.
      *
      * @param managedUserVM the managed user View Model.
-     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is incorrect.
-     * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
-     * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is already used.
+     * @throws InvalidPasswordException  {@code 400 (Bad Request)} if the password
+     *                                   is incorrect.
+     * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is
+     *                                   already used.
+     * @throws LoginAlreadyUsedException {@code 400 (Bad Request)} if the login is
+     *                                   already used.
      */
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
@@ -68,7 +84,8 @@ public class AccountResource {
      * {@code GET  /activate} : activate the registered user.
      *
      * @param key the activation key.
-     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user couldn't be activated.
+     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user
+     *                          couldn't be activated.
      */
     @GetMapping("/activate")
     public Mono<Void> activateAccount(@RequestParam(value = "key") String key) {
@@ -82,20 +99,105 @@ public class AccountResource {
      * {@code GET  /account} : get the current user.
      *
      * @return the current user.
-     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user couldn't be returned.
+     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user
+     *                          couldn't be returned.
      */
     @GetMapping("/account")
     public Mono<AdminUserDTO> getAccount() {
-        Mono<User> user = userService.getUserWithAuthorities();
-        return user.map(AdminUserDTO::new).switchIfEmpty(Mono.error(new AccountResourceException("User could not be found")));
+        Mono<User> monoUser = userService.getUserWithAuthorities();
+        try {
+            Mono<AdminUserDTO> userDTO = monoUser
+                .map(AdminUserDTO::new)
+                .switchIfEmpty(Mono.error(new AccountResourceException("User could not be found")));
+
+            List<String> roles = userService.getAuthorities().collectList().toFuture().get();
+            Flux<IFuncionalidadesNativeDTO> todasFucionalidades = userRepository.functionalidadesDeUsuario(roles);
+            List<IFuncionalidadesNativeDTO> padres = todasFucionalidades
+                .collectList()
+                .toFuture()
+                .get()
+                .stream()
+                .filter(fun -> fun.getPadreid() == null)
+                .sorted(Comparator.comparing(IFuncionalidadesNativeDTO::getPrioridad))
+                .collect(Collectors.toList());
+            List<String> urlsPermitidas = new ArrayList<>();
+            List<FuncionalidadPorUsuario> menu = new ArrayList<>();
+            padres.forEach(padre -> {
+                System.out.println(padre.toString());
+                FuncionalidadPorUsuario pad = new FuncionalidadPorUsuario();
+                pad.setNombre(padre.getNombre());
+                pad.setIcono(padre.getIcono());
+                pad.setUrl(padre.getUrl());
+                pad.setVisible(padre.getVisible());
+                List<IFuncionalidadesNativeDTO> hijos = new ArrayList<>();
+                try {
+                    hijos =
+                        todasFucionalidades
+                            .collectList()
+                            .toFuture()
+                            .get()
+                            .stream()
+                            .filter(fun -> {
+                                if (fun.getPadreid() != null) {
+                                    if (fun.getPadreid().longValue() == padre.getId().longValue()) {
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            })
+                            .sorted(Comparator.comparing(IFuncionalidadesNativeDTO::getPrioridad))
+                            .collect(Collectors.toList());
+
+                    hijos.forEach(hijo -> {
+                        System.out.println("hijo" + hijo.toString());
+                        FuncionalidadPorUsuario hijoDTO = new FuncionalidadPorUsuario();
+                        hijoDTO.setNombre(hijo.getNombre());
+                        hijoDTO.setIcono(hijo.getIcono());
+                        hijoDTO.setUrl(hijo.getUrl());
+                        hijoDTO.setVisible(hijo.getVisible());
+                        if (hijo.getVisible()) {
+                            pad.agregarHijo(hijoDTO);
+                        }
+
+                        urlsPermitidas.add(hijo.getUrl());
+                        /*
+                                        userDTO.map(u -> {
+                                            u.getUrlsPermitidas().add(hijo.getUrl());
+                                            return u;
+                                        }); */
+
+                    });
+
+                    menu.add(pad);
+                } catch (InterruptedException | ExecutionException e) {
+                    System.out.println("======>" + e.getMessage());
+                    e.printStackTrace();
+                }
+            });
+
+            // return user.map(AdminUserDTO::new).switchIfEmpty(Mono.error(new
+            // AccountResourceException("User could not be found")));
+            Mono<AdminUserDTO> monoMenu = userDTO.map(u -> {
+                u.getMenu().addAll(menu);
+                u.getUrlsPermitidas().addAll(urlsPermitidas);
+                return u;
+            });
+            return monoMenu;
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return Mono.empty();
     }
 
     /**
      * {@code POST  /account} : update the current user information.
      *
      * @param userDTO the current user information.
-     * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is already used.
-     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user login wasn't found.
+     * @throws EmailAlreadyUsedException {@code 400 (Bad Request)} if the email is
+     *                                   already used.
+     * @throws RuntimeException          {@code 500 (Internal Server Error)} if the
+     *                                   user login wasn't found.
      */
     @PostMapping("/account")
     public Mono<Void> saveAccount(@Valid @RequestBody AdminUserDTO userDTO) {
@@ -130,7 +232,8 @@ public class AccountResource {
      * {@code POST  /account/change-password} : changes the current user's password.
      *
      * @param passwordChangeDto current and new password.
-     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the new password is incorrect.
+     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the new
+     *                                  password is incorrect.
      */
     @PostMapping(path = "/account/change-password")
     public Mono<Void> changePassword(@RequestBody PasswordChangeDTO passwordChangeDto) {
@@ -141,7 +244,8 @@ public class AccountResource {
     }
 
     /**
-     * {@code POST   /account/reset-password/init} : Send an email to reset the password of the user.
+     * {@code POST   /account/reset-password/init} : Send an email to reset the
+     * password of the user.
      *
      * @param mail the mail of the user.
      */
@@ -153,7 +257,8 @@ public class AccountResource {
                 if (Objects.nonNull(user)) {
                     mailService.sendPasswordResetMail(user);
                 } else {
-                    // Pretend the request has been successful to prevent checking which emails really exist
+                    // Pretend the request has been successful to prevent checking which emails
+                    // really exist
                     // but log that an invalid attempt has been made
                     log.warn("Password reset requested for non existing mail");
                 }
@@ -162,11 +267,14 @@ public class AccountResource {
     }
 
     /**
-     * {@code POST   /account/reset-password/finish} : Finish to reset the password of the user.
+     * {@code POST   /account/reset-password/finish} : Finish to reset the password
+     * of the user.
      *
      * @param keyAndPassword the generated key and the new password.
-     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is incorrect.
-     * @throws RuntimeException {@code 500 (Internal Server Error)} if the password could not be reset.
+     * @throws InvalidPasswordException {@code 400 (Bad Request)} if the password is
+     *                                  incorrect.
+     * @throws RuntimeException         {@code 500 (Internal Server Error)} if the
+     *                                  password could not be reset.
      */
     @PostMapping(path = "/account/reset-password/finish")
     public Mono<Void> finishPasswordReset(@RequestBody KeyAndPasswordVM keyAndPassword) {

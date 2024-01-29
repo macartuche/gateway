@@ -6,6 +6,8 @@ import ec.gob.loja.gateway.domain.User;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -50,6 +52,10 @@ public class AdminUserDTO implements Serializable {
     private Instant lastModifiedDate;
 
     private Set<String> authorities;
+
+    private List<FuncionalidadPorUsuario> menu = new ArrayList<>();
+
+    private List<String> urlsPermitidas = new ArrayList<>();
 
     public AdminUserDTO() {
         // Empty constructor needed for Jackson.
@@ -173,6 +179,22 @@ public class AdminUserDTO implements Serializable {
 
     public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
+    }
+
+    public List<FuncionalidadPorUsuario> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<FuncionalidadPorUsuario> menu) {
+        this.menu = menu;
+    }
+
+    public List<String> getUrlsPermitidas() {
+        return urlsPermitidas;
+    }
+
+    public void setUrlsPermitidas(List<String> urlsPermitidas) {
+        this.urlsPermitidas = urlsPermitidas;
     }
 
     // prettier-ignore

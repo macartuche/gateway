@@ -5,17 +5,18 @@ import static org.springframework.data.relational.core.query.Query.query;
 
 import ec.gob.loja.gateway.domain.Authority;
 import ec.gob.loja.gateway.domain.User;
+import ec.gob.loja.gateway.service.dto.IFuncionalidadesNativeDTO;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.apache.commons.beanutils.BeanComparator;
 import org.springframework.data.domain.*;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.convert.R2dbcConverter;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
@@ -41,6 +42,23 @@ public interface UserRepository extends R2dbcRepository<User, Long>, UserReposit
     Flux<User> findAllByIdNotNull(Pageable pageable);
 
     Flux<User> findAllByIdNotNullAndActivatedIsTrue(Pageable pageable);
+
+    @Query(
+        "SELECT DISTINCT fun.id, " +
+        "fun.nombre, " +
+        "fun.icono,  " +
+        "fun.url, " +
+        "rof.prioridad, " +
+        "fun.padre_id as padreid, " +
+        "fun.visible " +
+        "FROM jhi_authority aut " +
+        "INNER JOIN rol_funcionalidad rof ON rof.rol = aut.name " +
+        "INNER JOIN funcionalidad fun ON fun.id = rof.funcionalidad_id " +
+        "WHERE fun.activo = TRUE " +
+        "AND aut.name IN (:roles) " +
+        "ORDER BY rof.prioridad ASC "
+    )
+    Flux<IFuncionalidadesNativeDTO> functionalidadesDeUsuario(@Param("roles") List<String> roles);
 
     Mono<Long> count();
 

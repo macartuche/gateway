@@ -3,6 +3,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterFeatures, TitleStrategy, provideRouter, withComponentInputBinding, withDebugTracing } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,6 +15,27 @@ import routes from './app.routes';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { NgbDateDayjsAdapter } from './config/datepicker-adapter';
 import { AppPageTitleStrategy } from './app-page-title-strategy';
+import {
+  AvatarModule,
+  BadgeModule,
+  BreadcrumbModule,
+  ButtonGroupModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FooterModule,
+  FormModule,
+  GridModule,
+  HeaderModule,
+  ListGroupModule,
+  NavModule,
+  ProgressModule,
+  SidebarModule,
+  TabsModule,
+  UtilitiesModule,
+} from '@coreui/angular';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { provideToastr } from 'ngx-toastr';
 
 const routerFeatures: Array<RouterFeatures> = [withComponentInputBinding()];
 if (DEBUG_INFO_ENABLED) {
@@ -28,8 +50,30 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(ServiceWorkerModule.register('ngsw-worker.js', { enabled: false })),
     importProvidersFrom(TranslationModule),
     importProvidersFrom(HttpClientModule),
+    importProvidersFrom(BrowserAnimationsModule),
+    importProvidersFrom([
+      SidebarModule,
+      AvatarModule,
+      BadgeModule,
+      BreadcrumbModule,
+      ButtonGroupModule,
+      ButtonModule,
+      CardModule,
+      DropdownModule,
+      FooterModule,
+      FormModule,
+      GridModule,
+      HeaderModule,
+      ListGroupModule,
+      NavModule,
+      ProgressModule,
+      TabsModule,
+      UtilitiesModule,
+    ]),
+    importProvidersFrom(NgScrollbarModule),
+    provideToastr(), // Toastr providers
     Title,
-    { provide: LOCALE_ID, useValue: 'en' },
+    { provide: LOCALE_ID, useValue: 'es' },
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     httpInterceptorProviders,
     { provide: TitleStrategy, useClass: AppPageTitleStrategy },

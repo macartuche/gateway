@@ -1,3 +1,5 @@
+import { Menu } from './menu.model';
+
 export class Account {
   constructor(
     public activated: boolean,
@@ -8,5 +10,7 @@ export class Account {
     public lastName: string | null,
     public login: string,
     public imageUrl: string | null,
+    public menu: Menu[] | [],
+    public urlsPermitidas: string[] | [],
   ) {}
 }
