@@ -1,0 +1,178 @@
+<form [formGroup]="form">
+  <div class="card">
+    <h5 class="card-header">Filtros de búsqueda</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field class="input-full-width">
+            <mat-label>Zona:</mat-label>
+            <mat-select formControlName="zona" (selectionChange)="seleccionZona($event.value)">
+              <mat-option [value]="0">Todas las zonas</mat-option>
+              <mat-option *ngFor="let zona of zonas" [value]="zona.id">{{ zona.nombre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-4">
+          <mat-form-field class="input-full-width">
+            <mat-label>Provincia:</mat-label>
+            <mat-select formControlName="provincia" (selectionChange)="seleccionProvincia($event.value)">
+              <mat-option [value]="0">Todas las provincias</mat-option>
+              <mat-option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.nombre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-4">
+          <mat-form-field class="input-full-width">
+            <mat-label>Distrito:</mat-label>
+            <mat-select formControlName="distrito" (selectionChange)="seleccionDistrito($event.value)">
+              <mat-option [value]="0">Todos los distritos</mat-option>
+              <mat-option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.nombre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field class="input-full-width">
+            <mat-label>Cantón:</mat-label>
+            <mat-select formControlName="canton" (selectionChange)="seleccionCanton($event.value)">
+              <mat-option [value]="0">Todos los cantones</mat-option>
+              <mat-option *ngFor="let canton of cantones" [value]="canton.id">{{ canton.nombre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-4">
+          <mat-form-field class="input-full-width">
+            <mat-label>Circuito:</mat-label>
+            <mat-select formControlName="circuito" (selectionChange)="seleccionCircuito($event.value)">
+              <mat-option [value]="0">Todos los circuitos</mat-option>
+              <mat-option *ngFor="let circuito of circuitos" [value]="circuito.id">{{ circuito.nombre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-4">
+          <mat-form-field class="input-full-width">
+            <mat-label>Parroquia:</mat-label>
+            <mat-select formControlName="parroquia">
+              <mat-option [value]="0">Todas las parroquias</mat-option>
+              <mat-option *ngFor="let parroquia of parroquias" [value]="parroquia.id">{{ parroquia.nombre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field class="input-full-width">
+            <mat-label>Establecimiento</mat-label>
+            <input matInput placeholder="Ingrese su criterio" formControlName="criterio" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="col-12" style="text-align: right">
+        <button mat-raised-button color="primary" (click)="buscar()">
+          <mat-icon>search</mat-icon>
+          Buscar
+        </button>
+
+        <button mat-raised-button type="button" (click)="limpiar()" color="primary">
+          <mat-icon>restart_alt</mat-icon>
+          Limpiar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="text-left card-header">
+          <div class="row">
+            <div class="col-6">Total de resultados: {{ establecimientos.length }}</div>
+            <div class="col-6 text-rigth" style="text-align: right">
+              <button type="button" (click)="nuevoEstablecimiento()" color="primary" mat-raised-button data-cy="submit">
+                <i class="fa-sharp fa-solid fa-plus"></i>
+                Crear establecimiento
+              </button>
+            </div>
+          </div>
+        </h5>
+      </div>
+    </div>
+
+    <table mat-table [dataSource]="establecimientos" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="unicodigo">
+        <th mat-header-cell *matHeaderCellDef>Unicodigo</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Establecimiento</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef>Tipo</th>
+        <td mat-cell *matCellDef="let element">{{ element.tipo.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="parroquia">
+        <th mat-header-cell *matHeaderCellDef>Parroquia</th>
+        <td mat-cell *matCellDef="let element">{{ element.parroquia.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef>Activo?</th>
+        <td mat-cell *matCellDef="let element">{{ element.estado.codigo === 'ESTABLECIMIENTO_ACTIVO' ? 'SI' : 'NO' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef style="width: 18%">Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            type="button"
+            (click)="abrirDialogoEditarEstablecimiento(element)"
+            class="btn btn-primary btn-sm white"
+            data-cy="entityEditButton"
+          >
+            <fa-icon icon="pencil-alt"></fa-icon>
+            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+          </button>
+
+          <button type="button" (click)="desactivarReactivar(element)" class="btn btn-danger btn-sm white" data-cy="entityDeleteButton">
+            <fa-icon icon="times"></fa-icon>
+            <span class="d-none d-md-inline">Activar/Desactiv.</span>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnasMostradas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnasMostradas"></tr>
+    </table>
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic catalogos"
+      [pageSize]="itemsPerPage"
+      [pageIndex]="pagina"
+      [length]="establecimientos.length"
+      (page)="handlePage($event)"
+    >
+    </mat-paginator>
+  </div>
+</form>
+
+<ngx-spinner type="ball-atom"></ngx-spinner>

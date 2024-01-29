@@ -1,9 +1,12 @@
 package ec.gob.loja.gateway.service.impl;
 
+import ec.gob.loja.gateway.domain.CatalogoItem;
 import ec.gob.loja.gateway.repository.CatalogoItemRepository;
 import ec.gob.loja.gateway.service.CatalogoItemService;
 import ec.gob.loja.gateway.service.dto.CatalogoItemDTO;
 import ec.gob.loja.gateway.service.mapper.CatalogoItemMapper;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
@@ -79,5 +82,20 @@ public class CatalogoItemServiceImpl implements CatalogoItemService {
     public Mono<Void> delete(Long id) {
         log.debug("Request to delete CatalogoItem : {}", id);
         return catalogoItemRepository.deleteById(id);
+    }
+
+    @Override
+    public Mono<CatalogoItemDTO> obtenerPorCodigoYCodigoPadre(String codigo, String codigoPadre) {
+        return catalogoItemRepository.obtenerPorCodigoYCodigoPadre(codigo, codigoPadre).map(catalogoItemMapper::toDto);
+    }
+
+    @Override
+    public Flux<CatalogoItemDTO> obtenerCompletoPorCatalogoId(Long catalogoId) {
+        return catalogoItemRepository.obtenerPorCatalogoId(catalogoId).map(catalogoItemMapper::toDto);
+    }
+
+    @Override
+    public Flux<CatalogoItemDTO> obtenerPorCodigoCatalogo(String codigo) {
+        return catalogoItemRepository.obtenerPorCodigoCatalogo(codigo).map(catalogoItemMapper::toDto);
     }
 }

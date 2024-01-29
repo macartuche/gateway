@@ -1,6 +1,8 @@
 package ec.gob.loja.gateway.repository;
 
 import ec.gob.loja.gateway.domain.CatalogoItem;
+import feign.Param;
+import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
@@ -33,6 +35,41 @@ public interface CatalogoItemRepository extends ReactiveCrudRepository<CatalogoI
 
     @Override
     Mono<Void> deleteById(Long id);
+
+    @Query(
+        "SELECT ci.* " +
+        "FROM catalogo_item ci " +
+        " JOIN catalogo c on c.id = ci.catalogo_id " +
+        " where ci.activo=TRUE AND c.codigo=:codigoCatalogo"
+    )
+    Flux<CatalogoItem> obtenerPorCodigoCatalogo(@Param("codigoCatalogo") String codigoCatalogo);
+
+    @Query(
+        "SELECT ci.* " +
+        "FROM catalogo_item ci " +
+        "   JOIN catalogo c on c.id = ci.catalogo_id " +
+        " WHERE item.activo=TRUE AND ci.codigo = :codigo AND cat.codigo = :codigoPadre"
+    )
+    Mono<CatalogoItem> obtenerPorCodigoYCodigoPadre(@Param("codigo") String codigo, @Param("codigoPadre") String codigoPadre);
+
+    @Query("SELECT ci.* " + "FROM catalogo_item ci " + "   JOIN catalogo c on c.id = ci.catalogo_id " + "WHERE  ci.activo=TRUE AND c.id=?1")
+    Flux<CatalogoItem> obtenerPorCatalogoId(Long catalogoId);
+
+    @Query(
+        "SELECT DISTINCT itm.* " +
+        "FROM usuario_establecimiento ues " +
+        "INNER JOIN establecimiento est ON est.id = ues.establecimiento_id " +
+        "INNER JOIN catalogo_item itm ON itm.id = ues.tipo_id " +
+        "WHERE ues.activo = TRUE  " +
+        "AND ues.usuario_id =:usuarioId " +
+        "AND ues.establecimiento_id =:establecimientoId " +
+        "AND itm.activo = TRUE " +
+        "ORDER BY itm.nombre ASC"
+    )
+    Flux<CatalogoItem> obtenerTiposTurnoPorUsuarioEstablecimiento(
+        @Param("usuarioId") Long usuarioId,
+        @Param("establecimientoId") Long establecimientoId
+    );
 }
 
 interface CatalogoItemRepositoryInternal {

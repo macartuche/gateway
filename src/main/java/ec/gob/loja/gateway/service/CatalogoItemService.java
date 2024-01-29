@@ -1,6 +1,7 @@
 package ec.gob.loja.gateway.service;
 
 import ec.gob.loja.gateway.service.dto.CatalogoItemDTO;
+import java.util.List;
 import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -63,4 +64,26 @@ public interface CatalogoItemService {
      * @return a Mono to signal the deletion
      */
     Mono<Void> delete(Long id);
+
+    /**
+     *
+     * @param codigoCatalogo
+     * @return
+     */
+    Flux<CatalogoItemDTO> obtenerPorCodigoCatalogo(String codigoCatalogo);
+
+    /**
+     *
+     * @param codigo
+     * @param codigoPadre
+     * @return
+     */
+    Mono<CatalogoItemDTO> obtenerPorCodigoYCodigoPadre(String codigo, String codigoPadre);
+
+    /**
+     *
+     * @param catalogoId
+     * @return
+     */
+    Flux<CatalogoItemDTO> obtenerCompletoPorCatalogoId(Long catalogoId);
 }
